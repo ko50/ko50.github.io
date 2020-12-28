@@ -1,19 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/helper/asset_resources.dart';
+import 'package:portfolio/helper/theme_colors.dart';
 
 class HeaderIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
+        padding: EdgeInsets.all(8.0),
+        height: 300,
+        width: 300,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(50),
-          border: Border.all(width: 2.0, color: Colors.purple[900]),
+          borderRadius: BorderRadius.circular(200),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              ThemeColor.PurplePink.color,
+              ThemeColor.PurpleBlack.color,
+            ],
+          ),
         ),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            border: Border.all(width: 2.5, color: Colors.white),
+            borderRadius: BorderRadius.circular(200),
+            border: Border.all(width: 7.0, color: ThemeColor.Background.color),
           ),
           child: Image.asset(AssetResources.CircularCotton.path),
         ),
