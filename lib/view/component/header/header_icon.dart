@@ -20,15 +20,26 @@ class HeaderIcon extends StatelessWidget {
               ThemeColor.PurpleBlack.color,
             ],
           ),
+          boxShadow: [
+            BoxShadow(
+              offset: Offset(0, 0),
+              blurRadius: 5.0,
+              color: Color(0x80000000),
+            ),
+          ],
         ),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(200),
-            border: Border.all(width: 7.0, color: ThemeColor.Background.color),
-          ),
-          child: Image.asset(AssetResources.CircularCotton.path),
-        ),
+        child: _icon(),
       ),
+    );
+  }
+
+  Container _icon() {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(200),
+        border: Border.all(width: 7.0, color: ThemeColor.Background.color),
+      ),
+      child: Image.asset(AssetResources.CircularCotton.path),
     );
   }
 }

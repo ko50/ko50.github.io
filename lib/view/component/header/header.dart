@@ -17,8 +17,8 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 48.0, bottom: 56.0),
-      height: 500,
+      padding: EdgeInsets.only(top: 64.0, bottom: 80.0),
+      height: 600,
       width: double.infinity,
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -26,8 +26,16 @@ class Header extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [Colors.white, Color(0xfffdfaff)],
         ),
-        border:
-            Border(bottom: BorderSide(width: 2.0, color: Colors.purple[900])),
+        border: Border(
+          bottom: BorderSide(width: 2.0, color: Colors.purple[900]),
+        ),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 0),
+            blurRadius: 5.0,
+            color: Color(0x80000000),
+          ),
+        ],
       ),
       child: Column(
         children: [
