@@ -24,7 +24,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets\images\cotton_circle.png
+    - assets/images/cotton_circle.png
   # fonts:
   #   - family: Schyler
   #     fonts:
