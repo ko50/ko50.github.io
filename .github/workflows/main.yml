@@ -9,22 +9,25 @@ jobs:
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@master
+      - uses: actions/checkout@master
 
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v1
-      with:
-        channel: 'stable'
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v1
+        with:
+          channel: "stable"
 
-    - name: Install
-      run: flutter pub get
+      - name: Install
+        run: flutter pub get
 
-    - name: Build
-      run: flutter build web
+      - name: Change base url
+        run: sed -e 's/<base href="\/">/<base href="portfolio-with-flutter\/">g'
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2.8.0
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./build/web
+      - name: Build
+        run: flutter build web
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v2.8.0
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: ./build/web
