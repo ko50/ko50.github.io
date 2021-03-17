@@ -22,6 +22,8 @@ jobs:
       - name: Change base url
         run: |
           sed -i -e "s!<base href=\"/\">!<base href=\"portfolio-with-flutter/\">!" web/index.html
+          sed -i -e "s!src=\"main.dart.js\"!src=\"portfolio-with-flutter/main.dart.js\"!" web/index.html
+          sed -i -e "s!href=\"manifest.json\"!href=\"portfolio-with-flutter/manifest.json\"!" web/index.html
 
       - name: Build
         run: flutter build web
