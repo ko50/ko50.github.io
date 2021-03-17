@@ -1,7 +1,6 @@
 {
     "name": "portfolio",
     "short_name": "portfolio",
-    "Scope": "/portfolio-with-flutter/",
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#0175C2",
