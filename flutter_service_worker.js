@@ -3,20 +3,20 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "cotton_circle.png": "ae953d2b6ef4d086365f185107c845ab",
-"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
+  "main.dart.js": "1586cc70b61b5d19d6efcaa2dabec309",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
-"manifest.json": "a6896742ea591e7daf188a11e90c43f8",
-"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/NOTICES": "f82c373b55fffa2f674a92d36a2c6519",
-"assets/assets/images/cotton_circle.png": "ae953d2b6ef4d086365f185107c845ab",
-"assets/AssetManifest.json": "c67eb9b06ff89738f23428765ed45638",
-"assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
+"icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
+"assets/NOTICES": "de325622cb165ed8c1aecec4bef56d53",
 "assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
-"index.html": "3fad38ef802dde7d1051601d8b2c7108",
-"/": "3fad38ef802dde7d1051601d8b2c7108",
+"assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
+"assets/AssetManifest.json": "c67eb9b06ff89738f23428765ed45638",
+"assets/assets/images/cotton_circle.png": "8d73fba78ea832930fb9586e8205c213",
+"assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "version.json": "426313f2f3133c2f20415344c4a22df3",
-"main.dart.js": "4b0f2044dc7a00b6b1906e818b3f25ce"
+"manifest.json": "a83bbbd9d23ea4d752fbcd44cdc544fa",
+"favicon.png": "5dcef449791fa27946b3d35ad8803796",
+"index.html": "4481bd71d4e7028ba777e093b7b6c7fc",
+"/": "4481bd71d4e7028ba777e093b7b6c7fc"
 };
 
 // The application shell files that are downloaded before a service worker can
@@ -160,7 +160,7 @@ async function downloadOffline() {
     }
     currentContent[key] = true;
   }
-  for (var resourceKey in Object.keys(RESOURCES)) {
+  for (var resourceKey of Object.keys(RESOURCES)) {
     if (!currentContent[resourceKey]) {
       resources.push(resourceKey);
     }
