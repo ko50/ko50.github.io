@@ -20,9 +20,7 @@ jobs:
         run: flutter pub get
 
       - name: Change base url
-        run: |
-          ls -l
-          sed -e 's/<base href="\/">/<base href="portfolio-with-flutter\/">g' index.html
+        run: sed -i -e "s/<base href=\"\/\">/<base href=\"portfolio-with-flutter\/\">g" web/index.html
 
       - name: Build
         run: flutter build web
