@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/view/component/header/header_icon.dart';
+
+import 'package:portfolio/view/component/root/cotton_icon.dart';
 
 class Header extends StatelessWidget {
   Widget get welcomeText => Padding(
