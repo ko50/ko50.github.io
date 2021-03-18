@@ -8,12 +8,10 @@ import 'package:portfolio/provider.dart';
 
 class SectionTransitionButton extends StatefulWidget {
   final void Function() onPressed;
-  final String text;
   final Section transitionTarget;
 
   SectionTransitionButton({
     required this.onPressed,
-    required this.text,
     required this.transitionTarget,
   });
 
@@ -35,7 +33,7 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
               ? ThemeColor.Background.color
               : ThemeColor.PurplePink.color,
         ),
-        child: Text(widget.text),
+        child: Text(widget.transitionTarget.text),
       );
 
   @override
