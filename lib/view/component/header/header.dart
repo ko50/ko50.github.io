@@ -15,14 +15,20 @@ class Header extends StatelessWidget with PreferredSizeWidget {
       preferredSize: preferredSize,
       child: AppBar(
         backgroundColor: ThemeColor.PurpleBlack.color,
-        title: TitleButton(),
-        actions: [
-          for (Section section in List.from(Section.values).sublist(1))
-            SectionTransitionButton(
-              transitionTarget: section,
-              onPressed: () {},
-            )
-        ],
+        flexibleSpace: Container(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              TitleButton(),
+              Expanded(child: Container()),
+              for (Section section in List.from(Section.values).sublist(1))
+                SectionTransitionButton(
+                  transitionTarget: section,
+                  onPressed: () {},
+                )
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -8,11 +8,7 @@ class RootPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: Header(),
-      body: ListView(
-        children: [
-          Root(),
-        ],
-      ),
+      body: Root(),
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/view/component/root/cotton_icon.dart';
 
 class Root extends StatelessWidget {
-  Widget get welcomeText => Padding(
+  Widget welcomeText() => Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         child: Text(
           'Hello World, My Name is ko!',
@@ -28,7 +28,7 @@ class Root extends StatelessWidget {
           colors: [Colors.white, Color(0xfffdfaff)],
         ),
         border: Border(
-          bottom: BorderSide(width: 2.0, color: Colors.purple[900]),
+          bottom: BorderSide(width: 2.0, color: Colors.purple),
         ),
         boxShadow: [
           BoxShadow(
@@ -41,7 +41,7 @@ class Root extends StatelessWidget {
       child: Column(
         children: [
           CottonIcon(),
-          welcomeText,
+          welcomeText(),
         ],
       ),
     );
