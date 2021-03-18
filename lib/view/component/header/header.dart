@@ -22,10 +22,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
               TitleButton(),
               Expanded(child: Container()),
               for (Section section in List.from(Section.values).sublist(1))
-                SectionTransitionButton(
-                  transitionTarget: section,
-                  onPressed: () {},
-                )
+                SectionTransitionButton(transitionTarget: section)
             ],
           ),
         ),

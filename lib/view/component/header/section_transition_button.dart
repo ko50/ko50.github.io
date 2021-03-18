@@ -7,13 +7,9 @@ import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/provider.dart';
 
 class SectionTransitionButton extends StatefulWidget {
-  final void Function() onPressed;
   final Section transitionTarget;
 
-  SectionTransitionButton({
-    required this.onPressed,
-    required this.transitionTarget,
-  });
+  SectionTransitionButton({required this.transitionTarget});
 
   @override
   _SectionTransitionButtonState createState() =>
@@ -21,17 +17,19 @@ class SectionTransitionButton extends StatefulWidget {
 }
 
 class _SectionTransitionButtonState extends State<SectionTransitionButton> {
-  bool _isHovered(int currentHovered) =>
-      currentHovered == widget.transitionTarget.index && currentHovered != -1;
+  bool _highlighted(int hoveredIndex, int displayedIndex) =>
+      hoveredIndex == widget.transitionTarget.index ||
+      (hoveredIndex == -1 && displayedIndex == 0) ||
+      (displayedIndex != 0 && displayedIndex == widget.transitionTarget.index);
 
-  Widget _text(bool isHovered) => AnimatedDefaultTextStyle(
-        duration: Duration(milliseconds: 250),
+  Widget _text(bool highlighted) => AnimatedDefaultTextStyle(
+        duration: Duration(milliseconds: 200),
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20,
-          color: isHovered
-              ? ThemeColor.WhityPurple.color
-              : ThemeColor.Background.color,
+          color: highlighted
+              ? ThemeColor.Background.color
+              : ThemeColor.WhityPurple.color,
         ),
         child: Text(widget.transitionTarget.text),
       );
@@ -39,11 +37,12 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, _) {
-      ValueNotifier<int> notifier = watch(hoveredSectionIndex);
+      ValueNotifier<int> hoverNotifier = watch(hoveredSectionIndex),
+          displayNotifier = watch(displayedSectionIndex);
 
       return MouseRegion(
-        onEnter: (_) => notifier.value = widget.transitionTarget.index,
-        onExit: (_) => notifier.value = -1,
+        onEnter: (_) => hoverNotifier.value = widget.transitionTarget.index,
+        onExit: (_) => hoverNotifier.value = -1,
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 4.0),
           padding: EdgeInsets.only(bottom: 2.0),
@@ -51,9 +50,10 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
               border: Border(
                   bottom: BorderSide(color: ThemeColor.WhityPurple.color))),
           child: GestureDetector(
-            onTap: widget.onPressed,
+            onTap: () => displayNotifier.value = widget.transitionTarget.index,
             behavior: HitTestBehavior.opaque,
-            child: _text(_isHovered(notifier.value)),
+            child:
+                _text(_highlighted(hoverNotifier.value, displayNotifier.value)),
           ),
         ),
       );
