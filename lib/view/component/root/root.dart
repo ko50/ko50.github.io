@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/view/component/root/cotton_icon.dart';
 
-class Header extends StatelessWidget {
+class Root extends StatelessWidget {
   Widget get welcomeText => Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         child: Text(
@@ -40,7 +40,7 @@ class Header extends StatelessWidget {
       ),
       child: Column(
         children: [
-          HeaderIcon(),
+          CottonIcon(),
           welcomeText,
         ],
       ),

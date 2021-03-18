@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/helper/asset_resources.dart';
 import 'package:portfolio/helper/theme_colors.dart';
 
-class HeaderIcon extends StatelessWidget {
+class CottonIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
