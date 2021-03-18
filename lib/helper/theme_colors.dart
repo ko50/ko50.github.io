@@ -5,6 +5,7 @@ enum ThemeColor {
   Purple,
   Background,
   PurplePink,
+  WhityPurple,
   PalePink,
 }
 
@@ -19,6 +20,8 @@ extension ColorData on ThemeColor {
         return 0xffffffff;
       case ThemeColor.PurplePink:
         return 0xffbd3a9a;
+      case ThemeColor.WhityPurple:
+        return 0xffd3b7d8;
       case ThemeColor.PalePink:
         return 0xfffdfaff;
 
