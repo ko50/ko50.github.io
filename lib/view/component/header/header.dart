@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/constants.dart';
 import 'package:portfolio/helper/sections.dart';
 import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/view/component/header/section_transition_button.dart';
@@ -13,28 +14,39 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return PreferredSize(
       preferredSize: preferredSize,
-      child: Container(
-        decoration: BoxDecoration(
-          color: ThemeColor.PurpleBlack.color,
-          boxShadow: <BoxShadow>[BoxShadow(blurRadius: 5)],
-          border: Border(
-            bottom: BorderSide(
-              color: ThemeColor.WhityPurple.color,
-              width: 4.0,
+      child: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            color: ThemeColor.PurpleBlack.color,
+            boxShadow: <BoxShadow>[BoxShadow(blurRadius: 5)],
+            border: Border(
+              bottom: BorderSide(
+                color: ThemeColor.WhityPurple.color,
+                width: 4.0,
+              ),
             ),
           ),
+          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+          child: content(),
         ),
-        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-        child: Row(
+      ),
+    );
+  }
+
+  LayoutBuilder content() {
+    return LayoutBuilder(
+      builder: (context, detail) {
+        return Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TitleButton(),
             Expanded(child: Container()),
-            for (Section section in List.from(Section.values).sublist(1))
-              SectionTransitionButton(transitionTarget: section)
+            if (detail.maxWidth >= widthBreakpoint)
+              for (Section section in List.from(Section.values).sublist(1))
+                SectionTransitionButton(transitionTarget: section)
           ],
-        ),
-      ),
+        );
+      },
     );
   }
 }
