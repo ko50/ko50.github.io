@@ -6,31 +6,33 @@ import 'package:portfolio/view/component/root/cotton_icon.dart';
 class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, detail) {
-      return Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Colors.white, Color(0xfffdfaff)],
-          ),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 5.0,
-              color: ThemeColor.Shadow.color,
+    return LayoutBuilder(
+      builder: (context, detail) {
+        return Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Colors.white, Color(0xfffdfaff)],
             ),
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CottonIcon(),
-            introduction(),
-          ],
-        ),
-      );
-    });
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 5.0,
+                color: ThemeColor.Shadow.color,
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CottonIcon(),
+              introduction(),
+            ],
+          ),
+        );
+      },
+    );
   }
 
   Widget introduction() {

@@ -29,28 +29,46 @@ class SectionTransitionTile extends StatelessWidget {
             );
           },
           behavior: HitTestBehavior.opaque,
-          child: AnimatedContainer(
-            duration: Duration(milliseconds: 200),
-            padding: EdgeInsets.all(16.0),
-            color: focused
-                ? ThemeColor.PurpleBlack.color
-                : ThemeColor.Background.color,
-            child: AnimatedDefaultTextStyle(
-              duration: Duration(milliseconds: 200),
-              style: TextStyle(
-                color: focused
-                    ? ThemeColor.Background.color
-                    : ThemeColor.PurpleBlack.color,
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-              ),
-              child: Text(
-                transitionTarget.text,
-              ),
-            ),
-          ),
+          child: _content(focused),
         ),
       );
     });
+  }
+
+  AnimatedContainer _content(bool focused) {
+    return AnimatedContainer(
+      duration: Duration(milliseconds: 200),
+      padding: EdgeInsets.all(16.0),
+      margin: EdgeInsets.symmetric(vertical: 2.0),
+      decoration: BoxDecoration(
+        boxShadow: [
+          if (focused) BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5),
+        ],
+        border: Border.symmetric(
+          horizontal: BorderSide(
+            color: focused
+                ? ThemeColor.WhityPurple.color
+                : ThemeColor.Background.color,
+            width: 4.0,
+          ),
+        ),
+        color: focused
+            ? ThemeColor.PurpleBlack.color
+            : ThemeColor.Background.color,
+      ),
+      child: AnimatedDefaultTextStyle(
+        duration: Duration(milliseconds: 200),
+        style: TextStyle(
+          color: focused
+              ? ThemeColor.Background.color
+              : ThemeColor.PurpleBlack.color,
+          fontWeight: FontWeight.w700,
+          fontSize: 20,
+        ),
+        child: Text(
+          transitionTarget.text,
+        ),
+      ),
+    );
   }
 }
