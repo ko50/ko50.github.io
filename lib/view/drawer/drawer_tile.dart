@@ -21,7 +21,13 @@ class SectionTransitionTile extends StatelessWidget {
       return MouseRegion(
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
-          onTap: () => displayedNotifier.value = transitionTarget.index,
+          onTap: () async {
+            displayedNotifier.value = transitionTarget.index;
+            await Future.delayed(
+              Duration(milliseconds: 300),
+              () => Navigator.of(context).pop(),
+            );
+          },
           behavior: HitTestBehavior.opaque,
           child: AnimatedContainer(
             duration: Duration(milliseconds: 200),
