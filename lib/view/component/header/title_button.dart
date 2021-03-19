@@ -20,7 +20,7 @@ class TitleButton extends StatelessWidget {
           child: Text(
             Section.values[0].text,
             style: TextStyle(
-              fontSize: 26,
+              fontSize: 30,
               fontWeight: FontWeight.w900,
               color: ThemeColor.Background.color,
             ),

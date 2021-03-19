@@ -50,7 +50,7 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
           padding: EdgeInsets.only(bottom: 2.0),
           decoration: BoxDecoration(
               border: Border(
-                  bottom: BorderSide(color: ThemeColor.Background.color))),
+                  bottom: BorderSide(color: ThemeColor.WhityPurple.color))),
           child: GestureDetector(
             onTap: () => displayNotifier.value = widget.transitionTarget.index,
             behavior: HitTestBehavior.opaque,

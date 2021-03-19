@@ -6,6 +6,7 @@ class CottonIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(16.0),
       width: 300,
       child: AspectRatio(
         aspectRatio: 1,

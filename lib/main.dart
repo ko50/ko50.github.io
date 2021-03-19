@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         canvasColor: ThemeColor.Background.color,
+        fontFamily: 'Roboto',
       ),
       home: RootPage(),
     );

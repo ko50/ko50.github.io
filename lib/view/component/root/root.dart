@@ -35,13 +35,16 @@ class Root extends StatelessWidget {
 
   Widget introduction() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 16.0),
-      child: Text(
-        'Hello World, My Name is ko!',
-        style: TextStyle(
-          color: ThemeColor.PurpleBlack.color,
-          fontSize: 35,
-          fontWeight: FontWeight.w700,
+      padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+      child: FittedBox(
+        fit: BoxFit.fitWidth,
+        child: Text(
+          'Hello World, My Name is ko!',
+          style: TextStyle(
+            color: ThemeColor.PurpleBlack.color,
+            fontSize: 35,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     );
