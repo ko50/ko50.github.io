@@ -8,10 +8,10 @@ class ResponsiveDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      elevation: 0.5,
       child: ListView(
         children: [
           DrawerHeader(
+            margin: EdgeInsets.only(bottom: 8.0),
             decoration: BoxDecoration(
               color: ThemeColor.PurpleBlack.color,
               boxShadow: <BoxShadow>[BoxShadow(blurRadius: 5)],

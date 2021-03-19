@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,19 +18,30 @@ class SectionTransitionTile extends StatelessWidget {
       final displayedNotifier = watch(displayedSectionIndex);
       bool focused = displayedNotifier.value == transitionTarget.index;
 
-      return ListTile(
-        tileColor: focused
-            ? ThemeColor.PurpleBlack.color
-            : ThemeColor.Background.color,
-        onTap: () => displayedNotifier.value = transitionTarget.index,
-        title: Text(
-          transitionTarget.text,
-          style: TextStyle(
+      return MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () => displayedNotifier.value = transitionTarget.index,
+          behavior: HitTestBehavior.opaque,
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 200),
+            padding: EdgeInsets.all(16.0),
             color: focused
-                ? ThemeColor.Background.color
-                : ThemeColor.PurpleBlack.color,
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
+                ? ThemeColor.PurpleBlack.color
+                : ThemeColor.Background.color,
+            child: AnimatedDefaultTextStyle(
+              duration: Duration(milliseconds: 200),
+              style: TextStyle(
+                color: focused
+                    ? ThemeColor.Background.color
+                    : ThemeColor.PurpleBlack.color,
+                fontWeight: FontWeight.w700,
+                fontSize: 20,
+              ),
+              child: Text(
+                transitionTarget.text,
+              ),
+            ),
           ),
         ),
       );
