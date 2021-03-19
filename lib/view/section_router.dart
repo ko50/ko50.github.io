@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/helper/sections.dart';
 import 'package:portfolio/provider.dart';
-import 'package:portfolio/view/component/root/root.dart';
+import 'package:portfolio/view/sections/root/root.dart';
 
 class SectionRouter extends StatelessWidget {
   @override
