@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,14 +13,17 @@ class TitleButton extends StatelessWidget {
     return Consumer(builder: (context, watch, _) {
       final notifier = watch(displayedSectionIndex);
 
-      return GestureDetector(
-        onTap: () => notifier.value = 0,
-        child: Text(
-          Section.values[0].text,
-          style: TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.w900,
-            color: ThemeColor.Background.color,
+      return MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () => notifier.value = 0,
+          child: Text(
+            Section.values[0].text,
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.w900,
+              color: ThemeColor.Background.color,
+            ),
           ),
         ),
       );

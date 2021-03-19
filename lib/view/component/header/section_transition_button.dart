@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -43,12 +44,13 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
       return MouseRegion(
         onEnter: (_) => hoverNotifier.value = widget.transitionTarget.index,
         onExit: (_) => hoverNotifier.value = -1,
+        cursor: SystemMouseCursors.click,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 4.0),
+          margin: EdgeInsets.symmetric(horizontal: 8.0),
           padding: EdgeInsets.only(bottom: 2.0),
           decoration: BoxDecoration(
               border: Border(
-                  bottom: BorderSide(color: ThemeColor.WhityPurple.color))),
+                  bottom: BorderSide(color: ThemeColor.Background.color))),
           child: GestureDetector(
             onTap: () => displayNotifier.value = widget.transitionTarget.index,
             behavior: HitTestBehavior.opaque,
