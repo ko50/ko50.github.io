@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/helper/theme_colors.dart';
 
 import 'package:portfolio/view/page.dart';
 
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "ko's portfolio",
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        canvasColor: ThemeColor.Background.color,
+      ),
       home: RootPage(),
     );
   }
