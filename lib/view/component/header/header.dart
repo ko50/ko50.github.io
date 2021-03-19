@@ -14,39 +14,39 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return PreferredSize(
       preferredSize: preferredSize,
-      child: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            color: ThemeColor.PurpleBlack.color,
-            boxShadow: <BoxShadow>[BoxShadow(blurRadius: 5)],
-            border: Border(
-              bottom: BorderSide(
-                color: ThemeColor.WhityPurple.color,
-                width: 4.0,
+      child: LayoutBuilder(builder: (context, detail) {
+        return AppBar(
+          backgroundColor: Colors.transparent,
+          flexibleSpace: Container(
+            constraints: BoxConstraints.expand(),
+            decoration: BoxDecoration(
+              color: ThemeColor.PurpleBlack.color,
+              boxShadow: <BoxShadow>[BoxShadow(blurRadius: 5)],
+              border: Border(
+                bottom: BorderSide(
+                  color: ThemeColor.WhityPurple.color,
+                  width: 4.0,
+                ),
               ),
             ),
+            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+            child: content(detail.maxWidth > widthBreakpoint),
           ),
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-          child: content(),
-        ),
-      ),
+        );
+      }),
     );
   }
 
-  LayoutBuilder content() {
-    return LayoutBuilder(
-      builder: (context, detail) {
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TitleButton(),
-            Expanded(child: Container()),
-            if (detail.maxWidth >= widthBreakpoint)
-              for (Section section in List.from(Section.values).sublist(1))
-                SectionTransitionButton(transitionTarget: section)
-          ],
-        );
-      },
+  Widget content(bool buttonsVisibility) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        TitleButton(),
+        Expanded(child: Container()),
+        if (buttonsVisibility)
+          for (Section section in List.from(Section.values).sublist(1))
+            SectionTransitionButton(transitionTarget: section)
+      ],
     );
   }
 }
