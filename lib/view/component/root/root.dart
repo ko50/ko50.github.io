@@ -1,25 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/helper/theme_colors.dart';
 
 import 'package:portfolio/view/component/root/cotton_icon.dart';
 
 class Root extends StatelessWidget {
-  Widget welcomeText() => Padding(
-        padding: EdgeInsets.symmetric(vertical: 16.0),
-        child: Text(
-          'Hello World, My Name is ko!',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 37,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      );
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, detail) {
       return Container(
-        padding: EdgeInsets.only(top: 64.0, bottom: 80.0),
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -27,24 +15,35 @@ class Root extends StatelessWidget {
             end: Alignment.bottomCenter,
             colors: [Colors.white, Color(0xfffdfaff)],
           ),
-          border: Border(
-            bottom: BorderSide(width: 2.0, color: Colors.purple),
-          ),
           boxShadow: [
             BoxShadow(
-              offset: Offset(0, 0),
               blurRadius: 5.0,
-              color: Color(0x80000000),
+              color: ThemeColor.Shadow.color,
             ),
           ],
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CottonIcon(),
-            welcomeText(),
+            introduction(),
           ],
         ),
       );
     });
+  }
+
+  Widget introduction() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      child: Text(
+        'Hello World, My Name is ko!',
+        style: TextStyle(
+          color: ThemeColor.PurpleBlack.color,
+          fontSize: 35,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
   }
 }

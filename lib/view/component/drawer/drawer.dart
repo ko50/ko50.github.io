@@ -10,29 +10,31 @@ class ResponsiveDrawer extends StatelessWidget {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
-            margin: EdgeInsets.only(bottom: 8.0),
-            decoration: BoxDecoration(
-              color: ThemeColor.PurpleBlack.color,
-              boxShadow: <BoxShadow>[
-                BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5),
-              ],
-              border: Border(
-                  bottom: BorderSide(
-                      color: ThemeColor.WhityPurple.color, width: 4.0)),
-            ),
-            child: Text(
-              'ko\'s Portfolio',
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.w700,
-                color: ThemeColor.Background.color,
-              ),
-            ),
-          ),
+          drawerHeader(),
           for (Section section in List.from(Section.values).sublist(1))
             SectionTransitionTile(section)
         ],
+      ),
+    );
+  }
+
+  DrawerHeader drawerHeader() {
+    return DrawerHeader(
+      margin: EdgeInsets.only(bottom: 8.0),
+      decoration: BoxDecoration(
+        color: ThemeColor.PurpleBlack.color,
+        boxShadow: [BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5)],
+        border: Border(
+          bottom: BorderSide(color: ThemeColor.WhityPurple.color, width: 4.0),
+        ),
+      ),
+      child: Text(
+        'ko\'s Portfolio',
+        style: TextStyle(
+          fontSize: 26,
+          fontWeight: FontWeight.w700,
+          color: ThemeColor.Background.color,
+        ),
       ),
     );
   }
