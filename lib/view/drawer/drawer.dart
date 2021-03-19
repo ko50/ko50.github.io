@@ -14,13 +14,12 @@ class ResponsiveDrawer extends StatelessWidget {
             margin: EdgeInsets.only(bottom: 8.0),
             decoration: BoxDecoration(
               color: ThemeColor.PurpleBlack.color,
-              boxShadow: <BoxShadow>[BoxShadow(blurRadius: 5)],
+              boxShadow: <BoxShadow>[
+                BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5),
+              ],
               border: Border(
-                bottom: BorderSide(
-                  color: ThemeColor.WhityPurple.color,
-                  width: 4.0,
-                ),
-              ),
+                  bottom: BorderSide(
+                      color: ThemeColor.WhityPurple.color, width: 4.0)),
             ),
             child: Text(
               'ko\'s Portfolio',

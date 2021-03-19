@@ -8,32 +8,34 @@ import 'package:portfolio/view/component/header/title_button.dart';
 
 class Header extends StatelessWidget with PreferredSizeWidget {
   @override
-  Size get preferredSize => Size.fromHeight(70);
+  Size get preferredSize => Size.fromHeight(65);
 
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
       preferredSize: preferredSize,
-      child: LayoutBuilder(builder: (context, detail) {
-        return AppBar(
-          backgroundColor: Colors.transparent,
-          flexibleSpace: Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
-              color: ThemeColor.PurpleBlack.color,
-              boxShadow: <BoxShadow>[BoxShadow(blurRadius: 5)],
-              border: Border(
-                bottom: BorderSide(
-                  color: ThemeColor.WhityPurple.color,
-                  width: 4.0,
-                ),
+      child: LayoutBuilder(
+        builder: (context, detail) {
+          return AppBar(
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            flexibleSpace: Container(
+              constraints: BoxConstraints.expand(),
+              decoration: BoxDecoration(
+                color: ThemeColor.PurpleBlack.color,
+                boxShadow: <BoxShadow>[
+                  BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5)
+                ],
+                border: Border(
+                    bottom: BorderSide(
+                        color: ThemeColor.WhityPurple.color, width: 4.0)),
               ),
+              padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
+              child: content(detail.maxWidth > widthBreakpoint),
             ),
-            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-            child: content(detail.maxWidth > widthBreakpoint),
-          ),
-        );
-      }),
+          );
+        },
+      ),
     );
   }
 
