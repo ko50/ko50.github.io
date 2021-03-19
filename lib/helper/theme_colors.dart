@@ -29,7 +29,7 @@ extension ColorData on ThemeColor {
       case ThemeColor.Grey:
         return 0xfff5f5f5;
       case ThemeColor.Shadow:
-        return 0x88ffffff;
+        return 0x88000000;
 
       default:
         return 0xff000000;
