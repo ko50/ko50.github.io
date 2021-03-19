@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/view/component/header/header.dart';
 import 'package:portfolio/view/component/root/root.dart';
-import 'package:portfolio/view/drawer/drawer.dart';
+import 'package:portfolio/view/component/drawer/drawer.dart';
 
 class RootPage extends StatelessWidget {
   @override
