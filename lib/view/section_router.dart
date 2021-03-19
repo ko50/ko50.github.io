@@ -16,15 +16,15 @@ class SectionRouter extends StatelessWidget {
 
         switch (displayedSection) {
           case Section.root:
-            return Root();
+            return Column(children: [Expanded(child: Root())]);
           case Section.aboutMe:
-            return Root();
+            return Text(displayedSection.text);
           case Section.skills:
-            return Root();
+            return Text(displayedSection.text);
           case Section.works:
-            return Root();
+            return Text(displayedSection.text);
           case Section.contacts:
-            return Root();
+            return Text(displayedSection.text);
         }
       },
     );
