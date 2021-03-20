@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/constants.dart';
 import 'package:portfolio/controller/transition_controller.dart';
 
 import 'package:portfolio/helper/sections.dart';
@@ -26,7 +27,7 @@ class SectionTransitionTile extends StatelessWidget {
           onTap: () async {
             controller.transition(transitionTarget);
             await Future.delayed(
-              Duration(milliseconds: 300),
+              drawerAnimateDuration,
               () => Navigator.of(context).pop(),
             );
           },
@@ -39,7 +40,7 @@ class SectionTransitionTile extends StatelessWidget {
 
   AnimatedContainer _content(bool focused) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 200),
+      duration: drawerAnimateDuration,
       padding: EdgeInsets.all(16.0),
       margin: EdgeInsets.symmetric(vertical: 2.0),
       decoration: BoxDecoration(
@@ -59,7 +60,7 @@ class SectionTransitionTile extends StatelessWidget {
             : ThemeColor.Background.color,
       ),
       child: AnimatedDefaultTextStyle(
-        duration: Duration(milliseconds: 200),
+        duration: drawerAnimateDuration,
         style: TextStyle(
           color: focused
               ? ThemeColor.Background.color
