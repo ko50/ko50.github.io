@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/controller/transition_controller.dart';
 
 import 'package:portfolio/helper/sections.dart';
 import 'package:portfolio/helper/theme_colors.dart';
@@ -15,6 +16,7 @@ class SectionTransitionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, _) {
+      TransitionController controller = watch(transitionController);
       final displayedNotifier = watch(displayedSectionIndex);
       bool focused = displayedNotifier.value == transitionTarget.index;
 
@@ -22,7 +24,7 @@ class SectionTransitionTile extends StatelessWidget {
         cursor: SystemMouseCursors.click,
         child: GestureDetector(
           onTap: () async {
-            displayedNotifier.value = transitionTarget.index;
+            controller.transition(transitionTarget);
             await Future.delayed(
               Duration(milliseconds: 300),
               () => Navigator.of(context).pop(),
