@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/constants.dart';
 
+import 'package:portfolio/controller/transition_controller.dart';
 import 'package:portfolio/helper/sections.dart';
 import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/provider.dart';
@@ -27,6 +27,7 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, _) {
+      TransitionController controller = watch(transitionController);
       ValueNotifier<int> hoverNotifier = watch(hoveredSectionIndex),
           displayNotifier = watch(displayedSectionIndex);
 
@@ -41,10 +42,7 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
               border: Border(
                   bottom: BorderSide(color: ThemeColor.WhityPurple.color))),
           child: GestureDetector(
-            onTap: () async {
-              await Future.delayed(Duration(seconds: 1));
-              displayNotifier.value = widget.transitionTarget.index;
-            },
+            onTap: () => controller.transition(widget.transitionTarget),
             behavior: HitTestBehavior.opaque,
             child: _text(
               _highlighted(
