@@ -16,7 +16,7 @@ class TransitionController {
     animationNotifier.value = AnimationType.hide;
 
     await Future.delayed(
-        Duration(milliseconds: sectionAnimationDurationInMillisec));
+        Duration(milliseconds: transitionDefaultDuration));
     isFooterExpanded.value = true;
 
     await Future.delayed(footerAnimateDuration);

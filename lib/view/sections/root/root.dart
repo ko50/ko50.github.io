@@ -55,7 +55,7 @@ class Root extends StatelessWidget {
 
             return AnimatedOpacity(
               duration: Duration(
-                  milliseconds: sectionAnimationDurationInMillisec - 200),
+                  milliseconds: transitionDefaultDuration - 200),
               opacity: visibleState == AnimationType.appear ? 1 : 0,
               curve: Curves.easeInOut,
               child: Text(

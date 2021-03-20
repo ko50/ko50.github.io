@@ -16,7 +16,7 @@ class CottonIcon extends StatelessWidget {
         final visibilityState = watch(animationNotifier).value;
 
         return AnimatedContainer(
-          duration: Duration(milliseconds: sectionAnimationDurationInMillisec),
+          duration: Duration(milliseconds: transitionDefaultDuration),
           curve: Curves.easeInOutBack,
           width: visibilityState == AnimationType.appear ? 300 : 0,
           margin: EdgeInsets.all(16.0),
@@ -24,7 +24,7 @@ class CottonIcon extends StatelessWidget {
             aspectRatio: 1,
             child: AnimatedOpacity(
               duration: Duration(
-                  milliseconds: sectionAnimationDurationInMillisec - 200),
+                  milliseconds: transitionDefaultDuration - 200),
               curve: Curves.easeOut,
               opacity: visibilityState == AnimationType.appear ? 1 : 1,
               child: Container(
