@@ -15,14 +15,16 @@ class TransitionController {
 
     animationNotifier.value = AnimationType.hide;
 
-    await Future.delayed(footerExpandDelay);
+    await Future.delayed(sectionHideDuration);
+    isFooterExpanded.value = true;
+
     await Future.delayed(footerAnimateDuration);
     displayedSectionIndex.value = target.index;
-    isFooterExpanded.value = true;
 
     await Future.delayed(footerCloseDelay);
     isFooterExpanded.value = false;
 
+    await Future.delayed(footerAnimateDuration);
     animationNotifier.value = AnimationType.appear;
   }
 }

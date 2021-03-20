@@ -1,7 +1,7 @@
 const double widthBreakpoint = 600;
 
-const Duration footerExpandDelay = Duration(milliseconds: 250);
+const Duration sectionHideDuration = Duration(milliseconds: 500);
 
-const Duration footerAnimateDuration = Duration(milliseconds: 200);
+const Duration footerAnimateDuration = Duration(milliseconds: 400);
 
-const Duration footerCloseDelay = Duration(milliseconds: 300);
+const Duration footerCloseDelay = Duration(milliseconds: 700);
