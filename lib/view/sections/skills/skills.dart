@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/view/component/common/section_container.dart';
+import 'package:portfolio/view/sections/section_container.dart';
 
 class Skills extends StatelessWidget {
   @override

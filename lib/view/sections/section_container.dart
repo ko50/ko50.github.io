@@ -15,7 +15,7 @@ class SectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(32.0),
+      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
