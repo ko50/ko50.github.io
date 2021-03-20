@@ -16,7 +16,7 @@ class Footer extends StatelessWidget {
         return BottomAppBar(
           child: AnimatedContainer(
             duration: footerAnimateDuration,
-            curve: Curves.easeInOut,
+            curve: Curves.easeInOutExpo,
             height: expanded ? MediaQuery.of(context).size.height : 60,
             padding: EdgeInsets.all(8.0),
             decoration: BoxDecoration(
