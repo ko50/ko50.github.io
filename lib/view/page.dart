@@ -5,7 +5,7 @@ import 'package:portfolio/constants.dart';
 import 'package:portfolio/view/component/footer/footer.dart';
 import 'package:portfolio/view/component/header/header.dart';
 import 'package:portfolio/view/component/drawer/drawer.dart';
-import 'package:portfolio/view/section_router.dart';
+import 'package:portfolio/view/sections/section_router.dart';
 
 class RootPage extends StatelessWidget {
   @override
@@ -16,7 +16,8 @@ class RootPage extends StatelessWidget {
           appBar: Header(),
           endDrawer:
               detail.maxWidth <= widthBreakpoint ? ResponsiveDrawer() : null,
-          body: SectionRouter(),
+          body: Column(children: [Expanded(child: SectionRouter())]),
+          // TODO: レスポンシブ対応
           bottomNavigationBar: Footer(),
         );
       },

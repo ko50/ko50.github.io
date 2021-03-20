@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/constants.dart';
 
 import 'package:portfolio/helper/sections.dart';
 import 'package:portfolio/helper/theme_colors.dart';
@@ -23,18 +24,6 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
       (hoveredIndex == -1 && displayedIndex == 0) ||
       (displayedIndex != 0 && displayedIndex == widget.transitionTarget.index);
 
-  Widget _text(bool highlighted) => AnimatedDefaultTextStyle(
-        duration: Duration(milliseconds: 200),
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-          color: highlighted
-              ? ThemeColor.Background.color
-              : ThemeColor.WhityPurple.color,
-        ),
-        child: Text(widget.transitionTarget.text),
-      );
-
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, _) {
@@ -52,13 +41,32 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
               border: Border(
                   bottom: BorderSide(color: ThemeColor.WhityPurple.color))),
           child: GestureDetector(
-            onTap: () => displayNotifier.value = widget.transitionTarget.index,
+            onTap: () async {
+              await Future.delayed(Duration(seconds: 1));
+              displayNotifier.value = widget.transitionTarget.index;
+            },
             behavior: HitTestBehavior.opaque,
-            child:
-                _text(_highlighted(hoverNotifier.value, displayNotifier.value)),
+            child: _text(
+              _highlighted(
+                hoverNotifier.value,
+                displayNotifier.value,
+              ),
+            ),
           ),
         ),
       );
     });
   }
+
+  Widget _text(bool highlighted) => AnimatedDefaultTextStyle(
+        duration: Duration(milliseconds: 200),
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: highlighted
+              ? ThemeColor.Background.color
+              : ThemeColor.WhityPurple.color,
+        ),
+        child: Text(widget.transitionTarget.text),
+      );
 }

@@ -10,7 +10,12 @@ import 'package:portfolio/view/sections/root/root.dart';
 import 'package:portfolio/view/sections/skills/skills.dart';
 import 'package:portfolio/view/sections/works/works.dart';
 
-class SectionRouter extends StatelessWidget {
+class SectionRouter extends StatefulWidget {
+  @override
+  _SectionRouterState createState() => _SectionRouterState();
+}
+
+class _SectionRouterState extends State<SectionRouter> {
   @override
   Widget build(BuildContext context) {
     return Consumer(
@@ -20,15 +25,15 @@ class SectionRouter extends StatelessWidget {
 
         switch (displayedSection) {
           case Section.root:
-            return Column(children: [Expanded(child: Root())]);
+            return Root();
           case Section.aboutMe:
-            return Column(children: [Expanded(child: AboutMe())]);
+            return AboutMe();
           case Section.skills:
-            return Column(children: [Expanded(child: Skills())]);
+            return Skills();
           case Section.works:
-            return Column(children: [Expanded(child: Works())]);
+            return Works();
           case Section.contacts:
-            return Column(children: [Expanded(child: Contacts())]);
+            return Contacts();
         }
       },
     );
