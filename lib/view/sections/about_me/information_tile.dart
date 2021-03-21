@@ -22,14 +22,18 @@ class InformationTile extends StatelessWidget {
         AnimationType visibleState = watch(animationNotifier).value;
 
         return AnimatedOpacity(
-          duration: Duration(milliseconds: transitionDefaultDuration - 200),
-          curve: Interval(topic.index * 0.1, 1.0 - (topic.index * 0.1)),
+          duration: Duration(milliseconds: transitionDefaultDuration),
+          curve: Interval(
+            topic.index * 0.1,
+            (1.0 - (IntroduceTopic.values.length * 0.1)) + (topic.index * 0.1),
+          ),
           opacity: visibleState == AnimationType.appear ? 1 : 0,
           child: AnimatedContainer(
             duration: Duration(milliseconds: transitionDefaultDuration),
             curve: Interval(
               topic.index * 0.1,
-              0.6 + (topic.index * 0.1),
+              (1.0 - (IntroduceTopic.values.length * 0.1)) +
+                  (topic.index * 0.1),
               curve: Curves.easeOutCubic,
             ),
             margin: EdgeInsets.only(
