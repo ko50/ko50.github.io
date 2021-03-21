@@ -12,8 +12,8 @@ extension WorkDataExtention on WorkData {
     switch (this) {
       case WorkData.portfolio:
         return 'ポートフォリオです\n'
-            'もともとReactで書いたものを'
-            'Flutterのwebへの正式サポートを機にFlutterで書き直しました';
+            'もともとReactで書いてあったものを'
+            'Flutter for webの正式リリースをきっかけにFlutterで書き直しました';
     }
   }
 
@@ -23,4 +23,6 @@ extension WorkDataExtention on WorkData {
         return ['Dart', 'Flutter', 'Flutter for web'];
     }
   }
+
+  String get snapshotPath => 'assets/images/works/${this.title}.png';
 }

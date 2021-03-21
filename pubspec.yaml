@@ -35,6 +35,7 @@ flutter:
     - assets/images/skills/typescript.svg
     - assets/images/skills/git.svg
     - assets/images/skills/github.svg
+    - assets/images/works/Portfolio.png
 
   fonts:
     - family: Roboto
