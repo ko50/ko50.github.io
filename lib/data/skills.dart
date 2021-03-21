@@ -8,7 +8,7 @@ enum SkillData {
   GitHub,
 }
 
-enum SkillType { lang, frameWork, tool }
+enum SkillType { lang, framework, tool }
 
 extension Extension on SkillData {
   String get name {
@@ -60,11 +60,24 @@ extension Extension on SkillData {
 
       case SkillData.Flutter:
       case SkillData.React:
-        return SkillType.frameWork;
+        return SkillType.framework;
 
       case SkillData.Git:
       case SkillData.GitHub:
         return SkillType.tool;
+    }
+  }
+}
+
+extension SkillTypeExtension on SkillType {
+  String get name {
+    switch (this) {
+      case SkillType.lang:
+        return 'Languages';
+      case SkillType.framework:
+        return 'Frameworks';
+      case SkillType.tool:
+        return 'Tools';
     }
   }
 }
