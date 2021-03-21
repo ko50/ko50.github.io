@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:portfolio/data/about_me.dart';
 import 'package:portfolio/view/sections/about_me/information_tile.dart';
 
@@ -10,12 +11,13 @@ class AboutMe extends StatelessWidget {
     return SectionContainer(
       title: 'About Me',
       subTitle: '自己紹介',
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          for (IntroduceTopic topic in IntroduceTopic.values)
-            InformationTile(topic: topic),
-        ],
+      child: ConstrainedBox(
+        constraints: BoxConstraints.loose(Size.fromWidth(400)),
+        child: ListView.builder(
+          itemCount: IntroduceTopic.values.length,
+          itemBuilder: (context, index) =>
+              InformationTile(topic: IntroduceTopic.values[index]),
+        ),
       ),
     );
   }
