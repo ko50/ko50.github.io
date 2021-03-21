@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants.dart';
 import 'package:portfolio/data/skills.dart';
 
 import 'package:portfolio/view/sections/section_container.dart';
@@ -10,14 +11,38 @@ class Skills extends StatelessWidget {
     return SectionContainer(
       title: 'Skills',
       subTitle: 'できること',
-      child: Container(
-        constraints: BoxConstraints.loose(Size.fromWidth(1000)),
-        child: _content(),
+      child: LayoutBuilder(
+        builder: (context, detail) {
+          return Container(
+            constraints: BoxConstraints.loose(Size.fromWidth(1000)),
+            child: detail.maxWidth <= widthBreakpoint
+                ? _scaledContent()
+                : _extendedContent(),
+          );
+        },
       ),
     );
   }
 
-  Row _content() {
+  ListView _scaledContent() {
+    return ListView.builder(
+      itemCount: SkillType.values.length,
+      itemBuilder: (context, index) {
+        SkillType type = SkillType.values[index];
+
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 64.0, vertical: 16.0),
+          child: SkillGroup(
+            skillType: type,
+            skills:
+                SkillData.values.where((skill) => skill.type == type).toList(),
+          ),
+        );
+      },
+    );
+  }
+
+  Row _extendedContent() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,

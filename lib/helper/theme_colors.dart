@@ -31,7 +31,7 @@ extension ColorData on ThemeColor {
       case ThemeColor.PaleGrey:
         return 0xfff5f5f5;
       case ThemeColor.Grey:
-        return 0xff818181;
+        return 0xff404040;
       case ThemeColor.DeepGrey:
         return 0xff323232;
       case ThemeColor.Shadow:
