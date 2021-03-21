@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/data/skills.dart';
 import 'package:portfolio/helper/animation_type.dart';
-import 'package:portfolio/helper/asset_resources.dart';
 import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/provider.dart';
 
@@ -54,7 +53,7 @@ class SkillCard extends StatelessWidget {
 
   Image _logo() {
     return Image.asset(
-      AssetResources.CircularCotton.path, // skill.logoPath,
+      skill.logoPath,
       height: 20,
       fit: BoxFit.fitHeight,
       alignment: Alignment.center,
