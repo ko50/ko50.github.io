@@ -26,17 +26,21 @@ class SkillGroup extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 32.0),
       decoration: BoxDecoration(
         border: Border.symmetric(
-          horizontal: BorderSide(
+          vertical: BorderSide(
             color: ThemeColor.PurpleBlack.color,
             width: 2.0,
           ),
         ),
       ),
-      child: Text(
-        skillType.name,
-        style: TextStyle(
-          fontSize: 30,
-          color: ThemeColor.PurpleBlack.color,
+      child: FittedBox(
+        fit: BoxFit.fitWidth,
+        child: Text(
+          skillType.name,
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w700,
+            color: ThemeColor.PurpleBlack.color,
+          ),
         ),
       ),
     );

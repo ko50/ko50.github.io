@@ -10,7 +10,10 @@ class Skills extends StatelessWidget {
     return SectionContainer(
       title: 'Skills',
       subTitle: 'できること',
-      child: Container(child: _content()),
+      child: Container(
+        constraints: BoxConstraints.loose(Size.fromWidth(1000)),
+        child: _content(),
+      ),
     );
   }
 
@@ -20,13 +23,16 @@ class Skills extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         for (SkillType type in SkillType.values)
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.0),
-            child: SkillGroup(
-              skillType: type,
-              skills: SkillData.values
-                  .where((skill) => skill.type == type)
-                  .toList(),
+          Expanded(
+            flex: 1,
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 16.0),
+              child: SkillGroup(
+                skillType: type,
+                skills: SkillData.values
+                    .where((skill) => skill.type == type)
+                    .toList(),
+              ),
             ),
           ),
       ],
