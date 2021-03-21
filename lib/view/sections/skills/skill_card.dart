@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/data/skills.dart';
@@ -51,10 +52,10 @@ class SkillCard extends StatelessWidget {
     });
   }
 
-  Image _logo() {
-    return Image.asset(
+  SvgPicture _logo() {
+    return SvgPicture.asset(
       skill.logoPath,
-      height: 20,
+      height: 30,
       fit: BoxFit.fitHeight,
       alignment: Alignment.center,
     );
