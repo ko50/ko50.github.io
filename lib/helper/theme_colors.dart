@@ -8,6 +8,7 @@ enum ThemeColor {
   WhityPurple,
   PalePink,
   Grey,
+  DeepGrey,
   Shadow,
 }
 
@@ -28,6 +29,8 @@ extension ColorData on ThemeColor {
         return 0xfffdfaff;
       case ThemeColor.Grey:
         return 0xfff5f5f5;
+      case ThemeColor.DeepGrey:
+        return 0xff323232;
       case ThemeColor.Shadow:
         return 0x88000000;
 

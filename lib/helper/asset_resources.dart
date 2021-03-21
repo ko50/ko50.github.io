@@ -7,9 +7,6 @@ extension AssetResourcesData on AssetResources {
     switch (this) {
       case AssetResources.CircularCotton:
         return 'assets/images/cotton_circle.png';
-
-      default:
-        return '';
     }
   }
 }
