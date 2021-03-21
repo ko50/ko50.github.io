@@ -33,11 +33,11 @@ extension Extension on SkillData {
   String get description {
     switch (this) {
       case SkillData.Python:
-        return '競プロをやっていたときは書いていました';
+        return '競プロをやっていたときは使っていました';
       case SkillData.Flutter:
         return '一説によると、今世界で最もアツいフレームワークらしいです';
       case SkillData.Dart:
-        return '癖のない文法が売りらしいですが、無くて七癖です';
+        return '癖のない文法が売りらしいですが、実際無くて七癖です\nい〇そう君はブチギレていました';
       case SkillData.React:
         return '状態管理のやり方がわかりません';
       case SkillData.TypeScript:

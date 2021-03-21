@@ -67,7 +67,7 @@ class SkillCard extends StatelessWidget {
       child: Text(
         skill.name,
         style: TextStyle(
-          color: ThemeColor.DeepGrey.color,
+          color: ThemeColor.Grey.color,
           fontSize: 20,
         ),
       ),
