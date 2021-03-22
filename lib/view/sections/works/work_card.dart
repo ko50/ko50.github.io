@@ -7,6 +7,7 @@ import 'package:portfolio/helper/animation_type.dart';
 
 import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class WorkCard extends StatefulWidget {
   final WorkData work;
@@ -20,49 +21,60 @@ class WorkCard extends StatefulWidget {
 class _WorkCardState extends State<WorkCard> {
   bool _hovered = false;
 
+  void _launchLink() async {
+    String url = widget.work.link;
+    if (await canLaunch(url))
+      await launch(url, forceSafariVC: false, forceWebView: false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, detail) {
-        return Consumer(
-          builder: (context, watch, _) {
-            final visibility =
-                watch(animationNotifier).value == AnimationType.appear;
+        return GestureDetector(
+          onTap: _launchLink,
+          child: Consumer(
+            builder: (context, watch, _) {
+              final visibility =
+                  watch(animationNotifier).value == AnimationType.appear;
 
-            return AnimatedOpacity(
-              duration: Duration(milliseconds: transitionDefaultDuration + 200),
-              opacity: visibility ? 1 : 0,
-              child: MouseRegion(
-                onEnter: (_) => setState(() => _hovered = true),
-                onExit: (_) => setState(() => _hovered = false),
-                cursor: SystemMouseCursors.click,
-                child: AnimatedContainer(
-                  duration: Duration(milliseconds: transitionDefaultDuration),
-                  curve: Interval(
-                    widget.work.index * 0.1,
-                    1.0,
-                    curve: Curves.easeInOutBack,
-                  ),
-                  transform:
-                      Matrix4.diagonal3Values(1, visibility ? 1 : 0.1, 1),
-                  constraints: BoxConstraints(maxHeight: 500, maxWidth: 600),
-                  decoration: BoxDecoration(
-                    color: _hovered
-                        ? ThemeColor.PurpleBlack.color
-                        : ThemeColor.Background.color,
-                    borderRadius: BorderRadius.circular(5),
-                    border: Border.all(color: ThemeColor.PurpleBlack.color),
-                    boxShadow: [
-                      BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0)
-                    ],
-                  ),
-                  child: Column(
-                    children: [Expanded(child: _snapshot()), _information()],
+              return AnimatedOpacity(
+                duration:
+                    Duration(milliseconds: transitionDefaultDuration + 200),
+                opacity: visibility ? 1 : 0,
+                child: MouseRegion(
+                  onEnter: (_) => setState(() => _hovered = true),
+                  onExit: (_) => setState(() => _hovered = false),
+                  cursor: SystemMouseCursors.click,
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: transitionDefaultDuration),
+                    curve: Interval(
+                      widget.work.index * 0.1,
+                      1.0,
+                      curve: Curves.easeInOutBack,
+                    ),
+                    transform:
+                        Matrix4.diagonal3Values(1, visibility ? 1 : 0.1, 1),
+                    constraints: BoxConstraints(maxHeight: 500, maxWidth: 600),
+                    decoration: BoxDecoration(
+                      color: _hovered
+                          ? ThemeColor.PurpleBlack.color
+                          : ThemeColor.Background.color,
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(color: ThemeColor.PurpleBlack.color),
+                      boxShadow: [
+                        BoxShadow(
+                            color: ThemeColor.Shadow.color, blurRadius: 5.0)
+                      ],
+                    ),
+                    child: Column(
+                      children: [Expanded(child: _snapshot()), _information()],
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         );
       },
     );

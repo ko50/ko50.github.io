@@ -9,6 +9,7 @@ import 'package:portfolio/data/contacts.dart';
 import 'package:portfolio/helper/animation_type.dart';
 import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactCard extends StatefulWidget {
   final ContactWay way;
@@ -29,6 +30,12 @@ class _ContactCardState extends State<ContactCard>
 
   bool _hovered = false;
 
+  void _launchLink() async{
+    String url = widget.way.link;
+    if (await canLaunch(url))
+    await launch(url, forceSafariVC: false, forceWebView: false);
+  }
+
   @override
   void dispose() {
     _transitionAnimationController.dispose();
@@ -41,40 +48,44 @@ class _ContactCardState extends State<ContactCard>
       onEnter: (_) => setState(() => _hovered = true),
       onExit: (_) => setState(() => _hovered = false),
       cursor: SystemMouseCursors.click,
-      child: Consumer(
-        builder: (context, watch, _) {
-          bool visibility =
-              watch(animationNotifier).value == AnimationType.appear;
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: _launchLink,
+        child: Consumer(
+          builder: (context, watch, _) {
+            bool visibility =
+                watch(animationNotifier).value == AnimationType.appear;
 
-          visibility
-              ? _transitionAnimationController.forward()
-              : _transitionAnimationController.reverse();
+            visibility
+                ? _transitionAnimationController.forward()
+                : _transitionAnimationController.reverse();
 
-          return AnimatedOpacity(
-            duration: Duration(milliseconds: transitionDefaultDuration),
-            opacity: visibility ? 1 : 0,
-            child: AnimatedContainer(
+            return AnimatedOpacity(
               duration: Duration(milliseconds: transitionDefaultDuration),
-              curve: Curves.easeInOutBack,
-              transform: Matrix4.diagonal3Values(visibility ? 1 : 0.1, 1, 1),
-              margin: EdgeInsets.symmetric(vertical: 32.0),
-              padding: EdgeInsets.all(32.0),
-              decoration: BoxDecoration(
-                color: _hovered
-                    ? ThemeColor.PurpleBlack.color
-                    : ThemeColor.Background.color,
-                boxShadow: [
-                  BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0),
-                ],
+              opacity: visibility ? 1 : 0,
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: transitionDefaultDuration),
+                curve: Curves.easeInOutBack,
+                transform: Matrix4.diagonal3Values(visibility ? 1 : 0.1, 1, 1),
+                margin: EdgeInsets.symmetric(vertical: 32.0),
+                padding: EdgeInsets.all(32.0),
+                decoration: BoxDecoration(
+                  color: _hovered
+                      ? ThemeColor.PurpleBlack.color
+                      : ThemeColor.Background.color,
+                  boxShadow: [
+                    BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0),
+                  ],
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [_logo(visibility), _userName()],
+                ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [_logo(visibility), _userName()],
-              ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

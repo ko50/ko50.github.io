@@ -24,5 +24,12 @@ extension WorkDataExtention on WorkData {
     }
   }
 
+  String get link {
+    switch (this) {
+      case WorkData.portfolio:
+        return 'https://github.com/ko50/ko50.github.io';
+    }
+  }
+
   String get snapshotPath => 'assets/images/works/${this.title}.png';
 }

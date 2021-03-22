@@ -21,6 +21,15 @@ extension ContactWayExtension on ContactWay {
         return '@ko50';
     }
   }
+  
+  String get link {
+    switch (this) {
+      case ContactWay.Twitter:
+        return 'https://twitter.com/ko_CottonLove';
+      case ContactWay.GitHub:
+        return 'https://github.com/ko50';
+    }
+  }
 
   String get logoPath => 'assets/images/contacts/${this.name}.svg';
 }
