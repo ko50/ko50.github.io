@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,49 +21,61 @@ class ContactCard extends StatefulWidget {
 
 class _ContactCardState extends State<ContactCard>
     with SingleTickerProviderStateMixin {
-  late final AnimationController _controller = AnimationController(
+  late final AnimationController _transitionAnimationController =
+      AnimationController(
     vsync: this,
     duration: Duration(seconds: 1),
   );
 
+  bool _hovered = false;
+
   @override
   void dispose() {
-    _controller.dispose();
+    _transitionAnimationController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, watch, _) {
-        bool visibility =
-            watch(animationNotifier).value == AnimationType.appear;
+    return MouseRegion(
+      onEnter: (_) => setState(() => _hovered = true),
+      onExit: (_) => setState(() => _hovered = false),
+      cursor: SystemMouseCursors.click,
+      child: Consumer(
+        builder: (context, watch, _) {
+          bool visibility =
+              watch(animationNotifier).value == AnimationType.appear;
 
-        visibility ? _controller.forward() : _controller.reverse();
+          visibility
+              ? _transitionAnimationController.forward()
+              : _transitionAnimationController.reverse();
 
-        return AnimatedOpacity(
-          duration: Duration(milliseconds: transitionDefaultDuration),
-          opacity: visibility ? 1 : 0,
-          child: AnimatedContainer(
+          return AnimatedOpacity(
             duration: Duration(milliseconds: transitionDefaultDuration),
-            curve: Curves.easeInOutBack,
-            transform: Matrix4.diagonal3Values(visibility ? 1 : 0.1, 1, 1),
-            margin: EdgeInsets.symmetric(vertical: 32.0),
-            padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
-            decoration: BoxDecoration(
-              color: ThemeColor.Background.color,
-              boxShadow: [
-                BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0),
-              ],
+            opacity: visibility ? 1 : 0,
+            child: AnimatedContainer(
+              duration: Duration(milliseconds: transitionDefaultDuration),
+              curve: Curves.easeInOutBack,
+              transform: Matrix4.diagonal3Values(visibility ? 1 : 0.1, 1, 1),
+              margin: EdgeInsets.symmetric(vertical: 32.0),
+              padding: EdgeInsets.all(32.0),
+              decoration: BoxDecoration(
+                color: _hovered
+                    ? ThemeColor.PurpleBlack.color
+                    : ThemeColor.Background.color,
+                boxShadow: [
+                  BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0),
+                ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [_logo(visibility), _userName()],
+              ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [_logo(visibility), _userName()],
-            ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
@@ -70,15 +83,20 @@ class _ContactCardState extends State<ContactCard>
     return SafeArea(
       child: RotationTransition(
         turns: CurvedAnimation(
-          parent: _controller,
+          parent: _transitionAnimationController,
           curve: Curves.easeInOutBack,
         ),
         child: AnimatedContainer(
-          duration: Duration(milliseconds: transitionDefaultDuration),
+          duration: Duration(milliseconds: transitionDefaultDuration - 100),
           curve: Curves.easeInExpo,
           height: visibility ? 40 : 0,
           width: visibility ? 40 : 0,
-          child: SvgPicture.asset(widget.way.logoPath),
+          child: SvgPicture.asset(
+            widget.way.logoPath,
+            color: _hovered
+                ? ThemeColor.Background.color
+                : ThemeColor.PurpleBlack.color,
+          ),
         ),
       ),
     );
@@ -87,9 +105,15 @@ class _ContactCardState extends State<ContactCard>
   Padding _userName() {
     return Padding(
       padding: EdgeInsets.only(left: 16.0),
-      child: Text(
-        widget.way.userName,
-        style: TextStyle(fontSize: 25, color: ThemeColor.DeepGrey.color),
+      child: AnimatedDefaultTextStyle(
+        duration: Duration(milliseconds: transitionDefaultDuration - 100),
+        style: TextStyle(
+          fontSize: _hovered ? 30 : 25,
+          color: _hovered
+              ? ThemeColor.Background.color
+              : ThemeColor.DeepGrey.color,
+        ),
+        child: Text(widget.way.userName),
       ),
     );
   }
