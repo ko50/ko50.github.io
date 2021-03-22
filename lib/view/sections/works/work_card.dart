@@ -30,7 +30,7 @@ class _WorkCardState extends State<WorkCard> {
                 watch(animationNotifier).value == AnimationType.appear;
 
             return AnimatedOpacity(
-              duration: Duration(milliseconds: transitionDefaultDuration),
+              duration: Duration(milliseconds: transitionDefaultDuration + 200),
               opacity: visibility ? 1 : 0,
               child: MouseRegion(
                 onEnter: (_) => setState(() => _hovered = true),
