@@ -10,21 +10,19 @@ class Works extends StatelessWidget {
     return SectionContainer(
       title: 'Works',
       subTitle: 'やったこと',
-      child: Container(
-        child: Column(
-          children: [
-            for (WorkData work in WorkData.values) WorkCard(work: work),
-          ],
-        ),
-        // child: ListView.builder(
-        //   itemCount: WorkData.values.length,
-        //   itemBuilder: (context, index) {
-        //     WorkData work = WorkData.values[index];
+      child: LayoutBuilder(builder: (context, detail) {
+        return Container(
+          constraints: BoxConstraints(maxWidth: 600),
+          child: ListView.builder(
+            itemCount: WorkData.values.length,
+            itemBuilder: (context, index) {
+              WorkData work = WorkData.values[index];
 
-        //     return WorkCard(work: work);
-        //   },
-        // ),
-      ),
+              return WorkCard(work: work);
+            },
+          ),
+        );
+      }),
     );
   }
 }
