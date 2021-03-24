@@ -19,11 +19,7 @@ class SectionContainer extends StatelessWidget {
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _title(),
-          _subTitle(),
-          _child(),
-        ],
+        children: [_title(), _subTitle(), _child()],
       ),
     );
   }

@@ -28,12 +28,10 @@ class _ContactCardState extends State<ContactCard>
     duration: Duration(seconds: 1),
   );
 
-  bool _hovered = false;
-
-  void _launchLink() async{
+  void _launchLink() async {
     String url = widget.way.link;
     if (await canLaunch(url))
-    await launch(url, forceSafariVC: false, forceWebView: false);
+      await launch(url, forceSafariVC: false, forceWebView: false);
   }
 
   @override
@@ -45,8 +43,6 @@ class _ContactCardState extends State<ContactCard>
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setState(() => _hovered = true),
-      onExit: (_) => setState(() => _hovered = false),
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
@@ -63,24 +59,20 @@ class _ContactCardState extends State<ContactCard>
             return AnimatedOpacity(
               duration: Duration(milliseconds: transitionDefaultDuration),
               opacity: visibility ? 1 : 0,
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: transitionDefaultDuration),
-                curve: Curves.easeInOutBack,
-                transform: Matrix4.diagonal3Values(visibility ? 1 : 0.1, 1, 1),
-                margin: EdgeInsets.symmetric(vertical: 32.0),
-                padding: EdgeInsets.all(32.0),
-                decoration: BoxDecoration(
-                  color: _hovered
-                      ? ThemeColor.PurpleBlack.color
-                      : ThemeColor.Background.color,
-                  boxShadow: [
-                    BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0),
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [_logo(visibility), _userName()],
+              child: Card(
+                elevation: 3,
+                child: AnimatedContainer(
+                  duration: Duration(milliseconds: transitionDefaultDuration),
+                  curve: Curves.easeInOutBack,
+                  transform:
+                      Matrix4.diagonal3Values(visibility ? 1 : 0.1, 1, 1),
+                  margin: EdgeInsets.symmetric(vertical: 32.0),
+                  padding: EdgeInsets.symmetric(horizontal: 32.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [_logo(visibility), _userName()],
+                  ),
                 ),
               ),
             );
@@ -102,12 +94,7 @@ class _ContactCardState extends State<ContactCard>
           curve: Curves.easeInExpo,
           height: visibility ? 40 : 0,
           width: visibility ? 40 : 0,
-          child: SvgPicture.asset(
-            widget.way.logoPath,
-            color: _hovered
-                ? ThemeColor.Background.color
-                : ThemeColor.PurpleBlack.color,
-          ),
+          child: SvgPicture.asset(widget.way.logoPath),
         ),
       ),
     );
@@ -118,12 +105,7 @@ class _ContactCardState extends State<ContactCard>
       padding: EdgeInsets.only(left: 16.0),
       child: AnimatedDefaultTextStyle(
         duration: Duration(milliseconds: transitionDefaultDuration - 100),
-        style: TextStyle(
-          fontSize: _hovered ? 30 : 25,
-          color: _hovered
-              ? ThemeColor.Background.color
-              : ThemeColor.DeepGrey.color,
-        ),
+        style: TextStyle(fontSize: 25, color: ThemeColor.DeepGrey.color),
         child: Text(widget.way.userName),
       ),
     );

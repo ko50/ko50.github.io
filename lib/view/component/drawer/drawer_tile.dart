@@ -47,14 +47,14 @@ class SectionTransitionTile extends StatelessWidget {
         boxShadow: [
           if (focused) BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5),
         ],
-        border: Border.symmetric(
-          horizontal: BorderSide(
-            color: focused
-                ? ThemeColor.WhityPurple.color
-                : ThemeColor.Background.color,
-            width: 4.0,
-          ),
-        ),
+        // border: Border.symmetric(
+        //   horizontal: BorderSide(
+        //     color: focused
+        //         ? ThemeColor.WhityPurple.color
+        //         : ThemeColor.Background.color,
+        //     width: 4.0,
+        //   ),
+        // ),
         color: focused
             ? ThemeColor.PurpleBlack.color
             : ThemeColor.Background.color,

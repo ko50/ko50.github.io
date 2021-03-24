@@ -46,18 +46,15 @@ class SkillGroup extends StatelessWidget {
     );
   }
 
-  ListView _cards() {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: skills.length,
-      itemBuilder: (context, index) {
-        SkillData skill = skills[index];
-
-        return SkillCard(
-          skill: skill,
-          animationDelay: skill.index * 0.1,
-        );
-      },
+  Column _cards() {
+    return Column(
+      children: [
+        for (SkillData skill in skills)
+          SkillCard(
+            skill: skill,
+            animationDelay: skill.index * 0.1,
+          ),
+      ],
     );
   }
 }

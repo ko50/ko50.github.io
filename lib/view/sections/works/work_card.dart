@@ -90,7 +90,7 @@ class _WorkCardState extends State<WorkCard> {
       child: Image.asset(
         widget.work.snapshotPath,
         alignment: Alignment.topCenter,
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
       ),
     );
   }
