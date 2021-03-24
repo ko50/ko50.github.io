@@ -37,7 +37,7 @@ extension Extension on SkillData {
       case SkillData.Flutter:
         return '一説によると、今世界で最もアツいフレームワークらしいです';
       case SkillData.Dart:
-        return '癖のない文法が売りらしいですが、実際無くて七癖です\nい〇そう君はブチギレていました';
+        return '癖のない文法が売りらしいですが、実際無くて七癖です';
       case SkillData.React:
         return '状態管理のやり方がわかりません';
       case SkillData.TypeScript:

@@ -29,13 +29,13 @@ flutter:
 
   assets:
     - assets/images/cotton_circle.png
-    - assets/images/skills/python.svg
-    - assets/images/skills/dart.svg
-    - assets/images/skills/flutter.svg
-    - assets/images/skills/react.svg
-    - assets/images/skills/typescript.svg
-    - assets/images/skills/git.svg
-    - assets/images/skills/github.svg
+    - assets/images/skills/Python.svg
+    - assets/images/skills/Dart.svg
+    - assets/images/skills/Flutter.svg
+    - assets/images/skills/React.svg
+    - assets/images/skills/TypeScript.svg
+    - assets/images/skills/Git.svg
+    - assets/images/skills/GitHub.svg
     - assets/images/works/Portfolio.png
     - assets/images/contacts/Twitter.svg
     - assets/images/contacts/GitHub.svg
