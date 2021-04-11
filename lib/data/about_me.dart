@@ -9,13 +9,13 @@ extension Extension on IntroduceTopic {
   String get title {
     switch (this) {
       case IntroduceTopic.belong:
-        return '所属';
+        return 'Belong';
       case IntroduceTopic.major:
-        return '専攻';
+        return 'Major';
       case IntroduceTopic.spec:
-        return '仕様';
+        return 'Spec';
       case IntroduceTopic.misc:
-        return 'その他';
+        return 'Prefer';
     }
   }
 
@@ -26,9 +26,20 @@ extension Extension on IntroduceTopic {
       case IntroduceTopic.major:
         return '情報系/グローバル系 専攻';
       case IntroduceTopic.spec:
-        return '17歳 男性';
+        return '$_age歳 男性';
       case IntroduceTopic.misc:
-        return '好きなゲームはテトリス';
+        return 'テトリスが好き';
     }
+  }
+
+  int get _age {
+    final DateTime today = DateTime.now(), birthday = DateTime(2004, 2, 24);
+
+    if (today.month < birthday.month ||
+        (today.month == birthday.month && today.day < birthday.day)) {
+      return today.year - birthday.year - 1;
+    }
+
+    return today.year - birthday.year;
   }
 }
