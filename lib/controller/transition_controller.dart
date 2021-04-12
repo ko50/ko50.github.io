@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/helper/animation_type.dart';
 import 'package:portfolio/helper/sections.dart';
+import 'package:portfolio/model/about_me.dart';
 
 class TransitionController {
   ValueNotifier<int> displayedSectionIndex = ValueNotifier(0);
@@ -11,12 +12,13 @@ class TransitionController {
       ValueNotifier(AnimationType.appear);
 
   void transition(Section target) async {
+    await AboutMeData.fetchAll();
+
     if (target.index == displayedSectionIndex.value) return;
 
     animationNotifier.value = AnimationType.hide;
 
-    await Future.delayed(
-        Duration(milliseconds: transitionDefaultDuration));
+    await Future.delayed(Duration(milliseconds: transitionDefaultDuration));
     isFooterExpanded.value = true;
 
     await Future.delayed(footerAnimateDuration);
