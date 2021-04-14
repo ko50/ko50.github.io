@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/data/about_me.dart';
 import 'package:portfolio/helper/animation_type.dart';
 import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/model/about_me.dart';
 import 'package:portfolio/provider.dart';
 
 class InformationTile extends StatelessWidget {
-  final IntroduceTopic topic;
+  final AboutMeData data;
+  final int index;
 
   static const double translateXOffset = 32.0;
 
-  InformationTile({required this.topic});
+  InformationTile({required this.data, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +24,13 @@ class InformationTile extends StatelessWidget {
 
         return AnimatedOpacity(
           duration: Duration(milliseconds: transitionDefaultDuration),
-          curve: Interval(
-            topic.index * 0.1,
-            (1.0 - (IntroduceTopic.values.length * 0.1)) + (topic.index * 0.1),
-          ),
+          curve: Interval(index * 0.1, (1.0 - (4 * 0.1)) + (index * 0.1)),
           opacity: visibleState == AnimationType.appear ? 1 : 0,
           child: AnimatedContainer(
             duration: Duration(milliseconds: transitionDefaultDuration),
             curve: Interval(
-              topic.index * 0.1,
-              (1.0 - (IntroduceTopic.values.length * 0.1)) +
-                  (topic.index * 0.1),
+              index * 0.1,
+              (1.0 - (4 * 0.1)) + (index * 0.1),
               curve: Curves.easeOutCubic,
             ),
             margin: EdgeInsets.only(
@@ -59,7 +56,7 @@ class InformationTile extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          topic.title,
+          data.title,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w700,
@@ -69,7 +66,7 @@ class InformationTile extends StatelessWidget {
         FittedBox(
           fit: BoxFit.fitWidth,
           child: Text(
-            topic.content,
+            data.content,
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w500,
