@@ -1,5 +1,6 @@
 import 'package:portfolio/model/about_me.dart';
 import 'package:portfolio/model/contacts.dart';
+import 'package:portfolio/model/model_base.dart';
 import 'package:portfolio/model/skills.dart';
 import 'package:portfolio/model/works.dart';
 
@@ -27,18 +28,18 @@ extension SectionExtension on Section {
     }
   }
 
-  Type get dataType {
+  Future<List<ModelBase>> Function() get fetchData {
     switch (this) {
       case Section.root:
-        return Null;
+        return () async => [];
       case Section.aboutMe:
-        return AboutMeData;
+        return AboutMeData.fetchAll;
       case Section.skills:
-        return SkillData;
+        return SkillData.fetchAll;
       case Section.works:
-        return WorkData;
+        return WorkData.fetchAll;
       case Section.contacts:
-        return ContactData;
+        return ContactData.fetchAll;
     }
   }
 }
