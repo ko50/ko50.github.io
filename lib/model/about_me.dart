@@ -4,14 +4,15 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import 'package:portfolio/constants.dart';
+import 'package:portfolio/model/model_base.dart';
 
-class AboutMeData {
+class AboutMeData implements ModelBase {
   final String title;
   final String content;
 
   static const String nameSpace = 'about_me';
 
-  static Future<List<AboutMeData>?> fetchAll() async {
+  static Future<List<AboutMeData>> fetchAll() async {
     print('AboutMeData: Fetcing data');
     final Uri url = Uri.parse('$apiUriRoot/$nameSpace');
     final http.Response response = await http.get(url);

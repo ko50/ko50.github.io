@@ -5,8 +5,9 @@ import 'package:http/http.dart' as http;
 
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/model/enum/skill_type.dart';
+import 'package:portfolio/model/model_base.dart';
 
-class SkillData {
+class SkillData implements ModelBase {
   final String name;
   final String description;
   final String logoPath;
@@ -14,7 +15,7 @@ class SkillData {
 
   static const String nameSpace = 'skills';
 
-  static Future<List<SkillData>?> fetchAll() async {
+  static Future<List<SkillData>> fetchAll() async {
     print('SkillData: Fetcing data');
     final Uri url = Uri.parse('$apiUriRoot/$nameSpace');
     final http.Response response = await http.get(url);
