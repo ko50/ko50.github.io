@@ -22,7 +22,7 @@ class AboutMeData implements ModelBase {
     if (response.statusCode != HttpStatus.ok)
       throw Exception('$nameSpace: Failed to fetch data');
 
-    final List<dynamic> dataJson = json.decode(response.body);
+    final List<dynamic> dataJson = json.decode(utf8.decode(response.bodyBytes));
     final List<AboutMeData> data = dataJson
         .map<AboutMeData>(
           (e) => AboutMeData._fromJson(e),
