@@ -19,12 +19,12 @@ class CottonIcon extends StatelessWidget {
           duration: Duration(milliseconds: transitionDefaultDuration),
           curve: Curves.easeInOutBack,
           width: visibilityState == AnimationType.appear ? 300 : 0,
+          constraints: BoxConstraints(maxWidth: 300, maxHeight: 300),
           margin: EdgeInsets.all(16.0),
           child: AspectRatio(
             aspectRatio: 1,
             child: AnimatedOpacity(
-              duration: Duration(
-                  milliseconds: transitionDefaultDuration - 200),
+              duration: Duration(milliseconds: transitionDefaultDuration - 200),
               curve: Curves.easeOut,
               opacity: visibilityState == AnimationType.appear ? 1 : 1,
               child: Container(

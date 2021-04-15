@@ -16,7 +16,7 @@ class RootPage extends StatelessWidget {
           appBar: Header(),
           endDrawer:
               detail.maxWidth <= widthBreakpoint ? ResponsiveDrawer() : null,
-          body: Column(children: [Expanded(child: SectionRouter())]),
+          body: SectionRouter(),
           bottomNavigationBar: Footer(),
         );
       },

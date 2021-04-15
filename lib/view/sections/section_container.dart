@@ -20,10 +20,7 @@ class SectionContainer extends StatelessWidget {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
       width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [_title(), _subTitle(), _child()],
-      ),
+      child: ListView(children: [_title(), _subTitle(), _child()]),
     );
   }
 

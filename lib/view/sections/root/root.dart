@@ -14,10 +14,10 @@ class Root extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, detail) {
         return Container(
-          width: double.infinity,
+          // width: double.infinity,
+          constraints: BoxConstraints.expand(),
           decoration: _backgroundStyle(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
               CottonIcon(),
               introduction(),
