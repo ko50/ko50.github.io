@@ -14,24 +14,20 @@ class AboutMe extends StatelessWidget {
     return SectionContainer(
       title: 'About Me',
       subTitle: '自己紹介',
-      child: ConstrainedBox(
-        constraints: BoxConstraints.loose(Size.fromWidth(400)),
-        child: Builder(
-          builder: (context) {
-            if (data.isEmpty) return NonDataTelop();
+      builder: (data) {
+        assert(data[0].runtimeType == AboutMeData);
 
-            assert(data[0].runtimeType == AboutMeData);
-
-            return ListView.builder(
-              itemCount: data.length,
-              itemBuilder: (context, index) => InformationTile(
-                data: data[index] as AboutMeData,
-                index: index,
-              ),
-            );
-          },
-        ),
-      ),
+        return ConstrainedBox(
+          constraints: BoxConstraints.loose(Size.fromWidth(400)),
+          child: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (context, index) => InformationTile(
+              data: data[index] as AboutMeData,
+              index: index,
+            ),
+          ),
+        );
+      },
     );
   }
 }
