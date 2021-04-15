@@ -4,8 +4,9 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import 'package:portfolio/constants.dart';
+import 'package:portfolio/model/model_base.dart';
 
-class ContactData {
+class ContactData implements ModelBase {
   final String name;
   final String userName;
   final String serviceLink;
@@ -13,7 +14,7 @@ class ContactData {
 
   static const String nameSpace = 'Contacts';
 
-  static Future<List<ContactData>?> fetchAll() async {
+  static Future<List<ContactData>> fetchAll() async {
     print('ContactData: Fetcing data');
     final Uri url = Uri.parse('$apiUriRoot/$nameSpace');
     final http.Response response = await http.get(url);

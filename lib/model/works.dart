@@ -4,8 +4,9 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import 'package:portfolio/constants.dart';
+import 'package:portfolio/model/model_base.dart';
 
-class WorkData {
+class WorkData implements ModelBase {
   final String name;
   final String description;
   final String snapshotPath;
@@ -14,7 +15,7 @@ class WorkData {
 
   static const String nameSpace = 'Works';
 
-  static Future<List<WorkData>?> fetchAll() async {
+  static Future<List<WorkData>> fetchAll() async {
     print('WorkData: Fetcing data');
     final Uri url = Uri.parse('$apiUriRoot/$nameSpace');
     final http.Response response = await http.get(url);

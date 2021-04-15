@@ -5,16 +5,16 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/data/contacts.dart';
 import 'package:portfolio/helper/animation_type.dart';
 import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/model/contacts.dart';
 import 'package:portfolio/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactCard extends StatefulWidget {
-  final ContactWay way;
+  final ContactData contact;
 
-  ContactCard({required this.way});
+  ContactCard({required this.contact});
 
   @override
   _ContactCardState createState() => _ContactCardState();
@@ -29,7 +29,7 @@ class _ContactCardState extends State<ContactCard>
   );
 
   void _launchLink() async {
-    String url = widget.way.link;
+    String url = widget.contact.serviceLink;
     if (await canLaunch(url))
       await launch(url, forceSafariVC: false, forceWebView: false);
   }
@@ -94,7 +94,7 @@ class _ContactCardState extends State<ContactCard>
           curve: Curves.easeInExpo,
           height: visibility ? 40 : 0,
           width: visibility ? 40 : 0,
-          child: SvgPicture.asset(widget.way.logoPath),
+          child: SvgPicture.asset(widget.contact.logoPath),
         ),
       ),
     );
@@ -106,7 +106,7 @@ class _ContactCardState extends State<ContactCard>
       child: AnimatedDefaultTextStyle(
         duration: Duration(milliseconds: transitionDefaultDuration - 100),
         style: TextStyle(fontSize: 25, color: ThemeColor.DeepGrey.color),
-        child: Text(widget.way.userName),
+        child: Text(widget.contact.userName),
       ),
     );
   }
