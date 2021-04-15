@@ -13,7 +13,7 @@ class Skills extends StatelessWidget {
         title: 'Skills',
         subTitle: 'できること',
         builder: (data) {
-          assert(data.every((e) => e.runtimeType == SkillData));
+          assert(data.every((e) => e is SkillData));
 
           return LayoutBuilder(
             builder: (context, detail) {

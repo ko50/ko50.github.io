@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/constants.dart';
-import 'package:portfolio/data/works.dart';
-import 'package:portfolio/helper/animation_type.dart';
 
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/model/works.dart';
+
+import 'package:url_launcher/url_launcher.dart';
+
+import 'package:portfolio/constants.dart';
+import 'package:portfolio/helper/animation_type.dart';
 import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class WorkCard extends StatefulWidget {
   final WorkData work;
+  final int index;
 
-  const WorkCard({required this.work});
+  const WorkCard({required this.work, required this.index});
 
   @override
   _WorkCardState createState() => _WorkCardState();
@@ -49,7 +52,7 @@ class _WorkCardState extends State<WorkCard> {
                   child: AnimatedContainer(
                     duration: Duration(milliseconds: transitionDefaultDuration),
                     curve: Interval(
-                      widget.work.index * 0.1,
+                      widget.index * 0.1,
                       1.0,
                       curve: Curves.easeInOutBack,
                     ),
@@ -111,7 +114,7 @@ class _WorkCardState extends State<WorkCard> {
               fontWeight: FontWeight.w700,
               fontSize: 22,
             ),
-            child: Text(widget.work.title),
+            child: Text(widget.work.name),
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),

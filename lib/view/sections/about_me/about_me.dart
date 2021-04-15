@@ -14,7 +14,7 @@ class AboutMe extends StatelessWidget {
       title: 'About Me',
       subTitle: '自己紹介',
       builder: (data) {
-        assert(data.every((e) => e.runtimeType == AboutMeData));
+        assert(data.every((e) => e is AboutMeData));
 
         return ConstrainedBox(
           constraints: BoxConstraints.loose(Size.fromWidth(400)),
