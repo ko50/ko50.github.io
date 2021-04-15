@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/data/skills.dart';
 import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/model/enum/skill_type.dart';
+import 'package:portfolio/model/skills.dart';
 import 'package:portfolio/view/sections/skills/skill_card.dart';
 
 class SkillGroup extends StatelessWidget {
@@ -49,10 +50,10 @@ class SkillGroup extends StatelessWidget {
   Column _cards() {
     return Column(
       children: [
-        for (SkillData skill in skills)
+        for (int i = 0; i > skills.length; i++)
           SkillCard(
-            skill: skill,
-            animationDelay: skill.index * 0.1,
+            skill: skills[i],
+            animationDelay: (i + skillType.index) * 0.1,
           ),
       ],
     );
