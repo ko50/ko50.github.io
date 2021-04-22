@@ -1,4 +1,4 @@
-const double widthBreakpoint = 600;
+const double widthBreakpoint = 630;
 
 const int transitionDefaultDuration = 400;
 
