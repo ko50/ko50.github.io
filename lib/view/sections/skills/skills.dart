@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/constants.dart';
+import 'package:portfolio/helper/screen_type.dart';
 import 'package:portfolio/model/enum/skill_type.dart';
 import 'package:portfolio/model/skills.dart';
+import 'package:portfolio/provider.dart';
 import 'package:portfolio/view/sections/section_container.dart';
 import 'package:portfolio/view/sections/skills/skill_group.dart';
 
@@ -15,14 +18,16 @@ class Skills extends StatelessWidget {
         builder: (data) {
           assert(data.every((e) => e is SkillData));
 
-          return LayoutBuilder(
-            builder: (context, detail) {
+          return Consumer(
+            builder: (context, watch, _) {
+              final ScreenType screen = watch(screenType).value;
+
               return Expanded(
                 child: Container(
                   constraints: BoxConstraints.loose(Size.fromWidth(1000)),
-                  child: detail.maxWidth <= widthBreakpoint
-                      ? _scaledContent(data.whereType<SkillData>().toList())
-                      : _content(data.whereType<SkillData>().toList()),
+                  child: screen == ScreenType.desktop
+                      ? _content(data.whereType<SkillData>().toList())
+                      : _scaledContent(data.whereType<SkillData>().toList()),
                 ),
               );
             },

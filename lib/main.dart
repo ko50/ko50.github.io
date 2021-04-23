@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
           return Consumer(
             builder: (context, watch, _) {
               watch(screenType).value = GetScreenType.find(detail.maxWidth);
-              print("MyApp: ${detail.maxWidth}");
 
               return RootPage();
             },

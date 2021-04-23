@@ -11,20 +11,16 @@ import 'package:portfolio/view/sections/root/cotton_icon.dart';
 class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, detail) {
-        return Container(
-          width: double.infinity,
-          decoration: _backgroundStyle(),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CottonIcon(),
-              introduction(),
-            ],
-          ),
-        );
-      },
+    return Container(
+      width: double.infinity,
+      decoration: _backgroundStyle(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CottonIcon(),
+          introduction(),
+        ],
+      ),
     );
   }
 
