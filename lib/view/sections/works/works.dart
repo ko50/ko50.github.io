@@ -13,19 +13,15 @@ class Works extends StatelessWidget {
       builder: (data) {
         assert(data.every((e) => e is WorkData));
 
-        return LayoutBuilder(
-          builder: (context, detail) {
-            return Container(
-              constraints: BoxConstraints(maxWidth: 600),
-              child: ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) => WorkCard(
-                  work: data[index] as WorkData,
-                  index: index,
-                ),
-              ),
-            );
-          },
+        return Container(
+          constraints: BoxConstraints(maxWidth: 600),
+          child: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (context, index) => WorkCard(
+              work: data[index] as WorkData,
+              index: index,
+            ),
+          ),
         );
       },
     );

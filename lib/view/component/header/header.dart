@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/constants.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'package:portfolio/helper/screen_type.dart';
 import 'package:portfolio/helper/sections.dart';
 import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/provider.dart';
 import 'package:portfolio/view/component/header/section_transition_button.dart';
 import 'package:portfolio/view/component/header/title_button.dart';
 
@@ -14,8 +17,10 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return PreferredSize(
       preferredSize: preferredSize,
-      child: LayoutBuilder(
-        builder: (context, detail) {
+      child: Consumer(
+        builder: (context, watch, _) {
+          final ScreenType screen = watch(screenType).value;
+
           return AppBar(
             elevation: 0,
             backgroundColor: Colors.transparent,
@@ -31,7 +36,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
                         color: ThemeColor.WhityPurple.color, width: 4.0)),
               ),
               padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32.0),
-              child: content(detail.maxWidth > widthBreakpoint),
+              child: content(screen == ScreenType.desktop),
             ),
           );
         },
