@@ -17,10 +17,20 @@ class SectionContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
-      width: double.infinity,
-      child: ListView(children: [_title(), _subTitle(), _child()]),
+    return LayoutBuilder(
+      builder: (context, detail) {
+        return SingleChildScrollView(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
+            width: double.infinity,
+            constraints: BoxConstraints(minHeight: detail.maxHeight),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [_title(), _subTitle(), _child()],
+            ),
+          ),
+        );
+      },
     );
   }
 
