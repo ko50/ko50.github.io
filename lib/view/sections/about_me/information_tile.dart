@@ -33,6 +33,7 @@ class InformationTile extends StatelessWidget {
               (1.0 - (4 * 0.1)) + (index * 0.1),
               curve: Curves.easeOutCubic,
             ),
+            constraints: BoxConstraints(minWidth: 100),
             margin: EdgeInsets.only(
               bottom: 16.0,
               left: visibleState == AnimationType.appear ? translateXOffset : 0,

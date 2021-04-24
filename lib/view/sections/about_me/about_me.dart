@@ -16,15 +16,12 @@ class AboutMe extends StatelessWidget {
       builder: (data) {
         assert(data.every((e) => e is AboutMeData));
 
-        return ConstrainedBox(
-          constraints: BoxConstraints.loose(Size.fromWidth(400)),
-          child: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (context, index) => InformationTile(
-              data: data[index] as AboutMeData,
-              index: index,
-            ),
-          ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            for (int index = 0; index < data.length; index++)
+              InformationTile(data: data[index] as AboutMeData, index: index),
+          ],
         );
       },
     );
