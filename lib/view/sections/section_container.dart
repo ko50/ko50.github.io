@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:portfolio/controller/transition_controller.dart';
 import 'package:portfolio/helper/theme_colors.dart';
 import 'package:portfolio/model/model_base.dart';
@@ -19,14 +20,17 @@ class SectionContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, detail) {
-        return SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
-            width: double.infinity,
-            constraints: BoxConstraints(minHeight: detail.maxHeight),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [_title(), _subTitle(), _child()],
+        return ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: detail.maxHeight),
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
+              width: double.infinity,
+              constraints: BoxConstraints(minHeight: detail.maxHeight),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [_title(), _subTitle(), _child()],
+              ),
             ),
           ),
         );
@@ -63,14 +67,14 @@ class SectionContainer extends StatelessWidget {
     );
   }
 
-  Expanded _child() {
+  Widget _child() {
     final List<ModelBase> data = TransitionController.displayedData;
 
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(top: 32.0),
-        child: data.isEmpty ? NonDataTelop() : builder(data),
-      ),
+    print(data);
+
+    return Padding(
+      padding: EdgeInsets.only(top: 32.0),
+      child: data.isEmpty ? NonDataTelop() : builder(data),
     );
   }
 }
