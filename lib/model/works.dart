@@ -13,7 +13,7 @@ class WorkData implements ModelBase {
   final String link;
   final List<String> tags;
 
-  static const String nameSpace = 'Works';
+  static const String nameSpace = 'works';
 
   static Future<List<WorkData>> fetchAll() async {
     print('WorkData: Fetcing data');

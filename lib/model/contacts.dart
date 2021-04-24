@@ -12,7 +12,7 @@ class ContactData implements ModelBase {
   final String serviceLink;
   final String logoPath;
 
-  static const String nameSpace = 'Contacts';
+  static const String nameSpace = 'contacts';
 
   static Future<List<ContactData>> fetchAll() async {
     print('ContactData: Fetcing data');
