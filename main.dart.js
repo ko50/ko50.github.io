@@ -64549,7 +64549,7 @@ r($,"aC2","amb",function(){return A.e9(Q.b8(Q.b8(V.acY(),G.zZ("-",null)),V.acY()
 r($,"aC5","amc",function(){return A.e9(Z.arO(O.em($.amb(),$.amd()),t.z),new E.aa5(),!1,t.j,H.O("dw"))})
 r($,"aC0","ama",function(){return A.e9(Q.b8(M.agt(G.zZ("^",null),t.N),$.amc()),new E.a9V(),!1,t.j,H.O("dw"))})
 r($,"aBK","OO",function(){var q=P.au7().i(0,"PORTFOLIO_API_HOST")
-return q==null?"":q})
+return q==null?"https://nanimitenda.com":q})
 r($,"aCd","rM",function(){var q=($.Y6+1)%16777215
 $.Y6=q
 return new Y.vC(new Y.aac(),null,q,H.O("vC<ns>"))})
