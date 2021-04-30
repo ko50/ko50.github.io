@@ -7,8 +7,8 @@ import 'package:portfolio/model/works.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/helper/animation_type.dart';
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/animation_type.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/provider.dart';
 
 class WorkCard extends StatefulWidget {

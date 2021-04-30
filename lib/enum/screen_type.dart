@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart' show Size;
 import 'package:portfolio/constants.dart';
 
 enum ScreenType { desktop, phone }

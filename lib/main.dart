@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/helper/screen_type.dart';
+import 'package:portfolio/enum/screen_type.dart';
 
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/view/page.dart';
 import 'package:portfolio/provider.dart';
 

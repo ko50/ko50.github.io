@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/helper/sections.dart';
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/sections.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/view/component/drawer/drawer_tile.dart';
 
 class ResponsiveDrawer extends StatelessWidget {

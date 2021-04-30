@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/enum/skill_type.dart';
 import 'package:portfolio/model/skills.dart';
 import 'package:portfolio/view/sections/skills/skill_card.dart';

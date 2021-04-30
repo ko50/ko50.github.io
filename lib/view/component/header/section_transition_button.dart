@@ -4,8 +4,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/controller/transition_controller.dart';
-import 'package:portfolio/helper/sections.dart';
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/sections.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/provider.dart';
 
 class SectionTransitionButton extends StatefulWidget {

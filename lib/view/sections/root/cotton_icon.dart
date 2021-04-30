@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/helper/animation_type.dart';
-import 'package:portfolio/helper/asset_resources.dart';
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/animation_type.dart';
+import 'package:portfolio/enum/asset_resources.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/provider.dart';
 
 class CottonIcon extends StatelessWidget {
@@ -23,8 +23,7 @@ class CottonIcon extends StatelessWidget {
           child: AspectRatio(
             aspectRatio: 1,
             child: AnimatedOpacity(
-              duration: Duration(
-                  milliseconds: transitionDefaultDuration - 200),
+              duration: Duration(milliseconds: transitionDefaultDuration - 200),
               curve: Curves.easeOut,
               opacity: visibilityState == AnimationType.appear ? 1 : 1,
               child: Container(

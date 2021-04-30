@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/helper/animation_type.dart';
-import 'package:portfolio/helper/sections.dart';
+import 'package:portfolio/enum/animation_type.dart';
+import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/model/model_base.dart';
 
 class TransitionController {

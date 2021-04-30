@@ -4,8 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/helper/animation_type.dart';
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/animation_type.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/skills.dart';
 import 'package:portfolio/provider.dart';
 

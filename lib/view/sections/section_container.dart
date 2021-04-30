@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/controller/transition_controller.dart';
-import 'package:portfolio/helper/theme_colors.dart';
+import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/model_base.dart';
 import 'package:portfolio/view/component/common/non_data_telop.dart';
 

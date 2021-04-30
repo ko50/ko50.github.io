@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/controller/transition_controller.dart';
-import 'package:portfolio/helper/animation_type.dart';
-import 'package:portfolio/helper/screen_type.dart';
+import 'package:portfolio/enum/animation_type.dart';
+import 'package:portfolio/enum/screen_type.dart';
 
 final Provider<TransitionController> transitionController =
     Provider((_) => TransitionController());
