@@ -8,10 +8,30 @@ import 'package:portfolio/model/model_base.dart';
 class TransitionController {
   static late List<ModelBase> displayedData;
 
+  bool initalized = false;
+
   ValueNotifier<int> displayedSectionIndex = ValueNotifier(0);
   ValueNotifier<bool> isFooterExpanded = ValueNotifier(false);
   ValueNotifier<AnimationType> animationNotifier =
       ValueNotifier(AnimationType.appear);
+
+  void initial() async {
+    if (initalized) return;
+
+    animationNotifier.value = AnimationType.appear;
+    isFooterExpanded.value = true;
+
+    await Future.delayed(initialLoadDuration);
+    animationNotifier.value = AnimationType.hide;
+
+    await Future.delayed(footerCloseDelay);
+    isFooterExpanded.value = false;
+
+    await Future.delayed(footerAnimateDuration);
+    animationNotifier.value = AnimationType.appear;
+
+    initalized = true;
+  }
 
   void transition(Section target) async {
     if (target.index == displayedSectionIndex.value) return;

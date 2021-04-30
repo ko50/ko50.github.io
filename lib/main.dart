@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/enum/screen_type.dart';
 
+import 'package:portfolio/enum/screen_type.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/view/page.dart';
 import 'package:portfolio/providers.dart';
@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
           return Consumer(
             builder: (context, watch, _) {
               watch(screenType).value = GetScreenType.find(detail.maxWidth);
+              watch(transitionController).initial();
 
               return RootPage();
             },
