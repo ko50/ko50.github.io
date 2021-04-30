@@ -6,7 +6,7 @@ import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/asset_resources.dart';
 import 'package:portfolio/enum/theme_colors.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 
 class CottonIcon extends StatelessWidget {
   @override

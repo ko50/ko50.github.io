@@ -5,7 +5,7 @@ import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/screen_type.dart';
 import 'package:portfolio/model/enum/skill_type.dart';
 import 'package:portfolio/model/skills.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 import 'package:portfolio/view/sections/section_container.dart';
 import 'package:portfolio/view/sections/skills/skill_group.dart';
 

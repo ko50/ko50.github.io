@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/controller/transition_controller.dart';
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 
 class SectionTransitionButton extends StatefulWidget {
   final Section transitionTarget;

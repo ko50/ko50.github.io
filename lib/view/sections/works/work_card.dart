@@ -9,7 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/theme_colors.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 
 class WorkCard extends StatefulWidget {
   final WorkData work;

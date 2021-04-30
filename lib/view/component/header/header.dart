@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/enum/screen_type.dart';
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 import 'package:portfolio/view/component/header/section_transition_button.dart';
 import 'package:portfolio/view/component/header/title_button.dart';
 

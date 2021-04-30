@@ -7,7 +7,7 @@ import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/skills.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 
 class SkillCard extends StatelessWidget {
   final SkillData skill;

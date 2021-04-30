@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:portfolio/controller/transition_controller.dart';
 import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/screen_type.dart';

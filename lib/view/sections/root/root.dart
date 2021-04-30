@@ -5,7 +5,7 @@ import 'package:portfolio/constants.dart';
 
 import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/theme_colors.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 import 'package:portfolio/view/sections/root/cotton_icon.dart';
 
 class Root extends StatelessWidget {

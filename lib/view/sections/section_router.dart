@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/enum/sections.dart';
-import 'package:portfolio/provider.dart';
+import 'package:portfolio/providers.dart';
 import 'package:portfolio/view/sections/about_me/about_me.dart';
 import 'package:portfolio/view/sections/contacts/contacts.dart';
 import 'package:portfolio/view/sections/root/root.dart';
