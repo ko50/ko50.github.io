@@ -12,7 +12,7 @@ class ContactData implements ModelBase {
   final String serviceLink;
   final String logoPath;
 
-  static const String nameSpace = 'Contacts';
+  static const String nameSpace = 'contacts';
 
   static Future<List<ContactData>> fetchAll() async {
     print('ContactData: Fetcing data');
@@ -20,11 +20,12 @@ class ContactData implements ModelBase {
     final http.Response response = await http.get(url);
 
     print('ContactData: ${response.statusCode}');
+    print('ContactData: ${response.body}');
 
     if (response.statusCode != HttpStatus.ok)
       throw Exception('$nameSpace: Failed to fetch data');
 
-    final List<dynamic> dataJson = json.decode(response.body);
+    final List<dynamic> dataJson = json.decode(utf8.decode(response.bodyBytes));
     final List<ContactData> data = dataJson
         .map<ContactData>(
           (e) => ContactData._fromJson(e),

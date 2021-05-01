@@ -18,6 +18,7 @@ class AboutMeData implements ModelBase {
     final http.Response response = await http.get(url);
 
     print('AboutMeData: ${response.statusCode}');
+    print('AboutMeData: ${response.body}');
 
     if (response.statusCode != HttpStatus.ok)
       throw Exception('$nameSpace: Failed to fetch data');

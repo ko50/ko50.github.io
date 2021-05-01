@@ -13,7 +13,7 @@ class WorkData implements ModelBase {
   final String link;
   final List<String> tags;
 
-  static const String nameSpace = 'Works';
+  static const String nameSpace = 'works';
 
   static Future<List<WorkData>> fetchAll() async {
     print('WorkData: Fetcing data');
@@ -21,11 +21,12 @@ class WorkData implements ModelBase {
     final http.Response response = await http.get(url);
 
     print('WorkData: ${response.statusCode}');
+    print('WorkData: ${response.body}');
 
     if (response.statusCode != HttpStatus.ok)
       throw Exception('$nameSpace: Failed to fetch data');
 
-    final List<dynamic> dataJson = json.decode(response.body);
+    final List<dynamic> dataJson = json.decode(utf8.decode(response.bodyBytes));
     final List<WorkData> data = dataJson
         .map<WorkData>(
           (e) => WorkData._fromJson(e),
