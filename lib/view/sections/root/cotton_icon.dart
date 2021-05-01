@@ -8,28 +8,68 @@ import 'package:portfolio/enum/asset_resources.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/providers.dart';
 
-class CottonIcon extends StatelessWidget {
+class CottonIcon extends StatefulWidget {
+  @override
+  _CottonIconState createState() => _CottonIconState();
+}
+
+class _CottonIconState extends State<CottonIcon>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(milliseconds: transitionDefaultDuration * 2),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, watch, _) {
         final visibilityState = watch(animationNotifier).value;
 
-        return AnimatedContainer(
-          duration: Duration(milliseconds: transitionDefaultDuration),
-          curve: Curves.easeInOutBack,
-          width: visibilityState == AnimationType.appear ? 300 : 0,
+        visibilityState == AnimationType.appear
+            ? _controller.forward()
+            : _controller.reverse();
+
+        return Container(
+          constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
           margin: EdgeInsets.all(16.0),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: AnimatedOpacity(
-              duration: Duration(milliseconds: transitionDefaultDuration - 200),
-              curve: Curves.easeOut,
-              opacity: visibilityState == AnimationType.appear ? 1 : 1,
-              child: Container(
-                padding: EdgeInsets.all(8.0),
-                decoration: _backgroundStyle(),
-                child: _icon(),
+          child: RotationTransition(
+            turns: CurvedAnimation(
+              curve: Curves.easeOutBack,
+              reverseCurve: Curves.easeInOutBack,
+              parent: _controller,
+            ),
+            child: ScaleTransition(
+              scale: CurvedAnimation(
+                curve: Curves.easeOutBack,
+                reverseCurve: Curves.easeInOutBack,
+                parent: _controller,
+              ),
+              child: FadeTransition(
+                opacity: Tween(begin: 0.0, end: 4.0).animate(
+                  CurvedAnimation(
+                    curve: Interval(0.0, 0.4, curve: Curves.easeInOut),
+                    reverseCurve: Interval(0.2, 0.6, curve: Curves.easeInOut),
+                    parent: _controller,
+                  ),
+                ),
+                child: Container(
+                  padding: EdgeInsets.all(8.0),
+                  decoration: _backgroundStyle(),
+                  child: _icon(),
+                ),
               ),
             ),
           ),
