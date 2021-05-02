@@ -1,26 +1,36 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/constants.dart';
 
 import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/providers.dart';
+import 'package:portfolio/constants.dart';
 import 'package:portfolio/view/sections/root/cotton_icon.dart';
 
 class Root extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: _backgroundStyle(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CottonIcon(),
-          introduction(),
-        ],
-      ),
+    return LayoutBuilder(
+      builder: (context, detail) {
+        return Container(
+          constraints: BoxConstraints.expand(),
+          decoration: _backgroundStyle(),
+          child: LayoutBuilder(
+            builder: (context, detail) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: detail.maxHeight),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [CottonIcon(), _introduction()],
+                  ),
+                ),
+              );
+            },
+          ),
+        );
+      },
     );
   }
 
@@ -40,7 +50,7 @@ class Root extends StatelessWidget {
     );
   }
 
-  Widget introduction() {
+  Widget _introduction() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
       child: FittedBox(

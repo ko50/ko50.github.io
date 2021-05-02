@@ -80,7 +80,7 @@ class _CottonIconState extends State<CottonIcon>
 
   BoxDecoration _backgroundStyle() {
     return BoxDecoration(
-      borderRadius: BorderRadius.circular(200),
+      borderRadius: BorderRadius.circular(1000),
       gradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
@@ -101,7 +101,7 @@ class _CottonIconState extends State<CottonIcon>
   Container _icon() {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(200),
+        borderRadius: BorderRadius.circular(10000),
         border: Border.all(width: 7.0, color: ThemeColor.Background.color),
       ),
       child: Image.asset(AssetResources.CircularCotton.path),

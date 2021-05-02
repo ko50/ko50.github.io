@@ -19,7 +19,7 @@ class RootPage extends StatelessWidget {
         return Scaffold(
           appBar: Header(),
           endDrawer: screen == ScreenType.desktop ? null : ResponsiveDrawer(),
-          body: Column(children: [Expanded(child: SectionRouter())]),
+          body: SectionRouter(),
           bottomNavigationBar: Footer(),
         );
       },

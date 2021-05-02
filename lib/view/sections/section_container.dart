@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:portfolio/controller/transition_controller.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/model_base.dart';
@@ -17,13 +18,23 @@ class SectionContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 64.0),
-      width: double.infinity,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [_title(), _subTitle(), _child()],
-      ),
+    return LayoutBuilder(
+      builder: (context, detail) {
+        return ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: detail.maxHeight),
+          child: SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
+              width: double.infinity,
+              constraints: BoxConstraints(minHeight: detail.maxHeight),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [_title(), _subTitle(), _child()],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -57,7 +68,7 @@ class SectionContainer extends StatelessWidget {
     );
   }
 
-  Expanded _child() {
+  Widget _child() {
     final List<ModelBase> data = TransitionController.displayedData;
 
     return Expanded(child: data.isEmpty ? NonDataTelop() : builder(data));
