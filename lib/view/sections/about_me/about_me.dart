@@ -17,6 +17,7 @@ class AboutMe extends StatelessWidget {
         assert(data.every((e) => e is AboutMeData));
 
         return Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (int index = 0; index < data.length; index++)

@@ -24,7 +24,7 @@ class SectionContainer extends StatelessWidget {
           constraints: BoxConstraints(maxHeight: detail.maxHeight),
           child: SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
+              padding: EdgeInsets.symmetric(vertical: 64.0),
               width: double.infinity,
               constraints: BoxConstraints(minHeight: detail.maxHeight),
               child: Column(
@@ -71,6 +71,6 @@ class SectionContainer extends StatelessWidget {
   Widget _child() {
     final List<ModelBase> data = TransitionController.displayedData;
 
-    return Expanded(child: data.isEmpty ? NonDataTelop() : builder(data));
+    return data.isEmpty ? NonDataTelop() : builder(data);
   }
 }
