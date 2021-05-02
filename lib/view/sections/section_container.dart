@@ -18,7 +18,7 @@ class SectionContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 64.0),
+      padding: EdgeInsets.symmetric(vertical: 64.0),
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -29,7 +29,7 @@ class SectionContainer extends StatelessWidget {
 
   Container _title() {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: ThemeColor.PurpleBlack.color)),
       ),
@@ -46,6 +46,7 @@ class SectionContainer extends StatelessWidget {
 
   Container _subTitle() {
     return Container(
+      margin: EdgeInsets.only(bottom: 32, right: 32.0, left: 32.0),
       child: Text(
         subTitle,
         style: TextStyle(
@@ -59,11 +60,6 @@ class SectionContainer extends StatelessWidget {
   Expanded _child() {
     final List<ModelBase> data = TransitionController.displayedData;
 
-    return Expanded(
-      child: Padding(
-        padding: EdgeInsets.only(top: 32.0),
-        child: data.isEmpty ? NonDataTelop() : builder(data),
-      ),
-    );
+    return Expanded(child: data.isEmpty ? NonDataTelop() : builder(data));
   }
 }
