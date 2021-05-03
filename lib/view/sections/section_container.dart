@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/controller/section_routing_controller.dart';
+import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/portfolio_api_data.dart';
+import 'package:portfolio/providers.dart';
 import 'package:portfolio/view/component/common/non_data_telop.dart';
 
 class SectionContainer extends StatefulWidget {
@@ -95,6 +98,16 @@ class _SectionContainerState extends State<SectionContainer>
   Widget _child() {
     final List<PortfolioAPIData> data = SectionRoutingController.displayedData;
 
-    return data.isEmpty ? NonDataTelop() : widget.builder(data, _controller);
+    return Consumer(
+      builder: (context, watch, child) {
+        watch(animationNotifier).value == AnimationType.appear
+            ? _controller.forward()
+            : _controller.reverse();
+
+        return data.isEmpty
+            ? NonDataTelop()
+            : widget.builder(data, _controller);
+      },
+    );
   }
 }

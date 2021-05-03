@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/constants.dart';
 
 import 'package:portfolio/controller/section_routing_controller.dart';
 import 'package:portfolio/enum/sections.dart';
@@ -13,6 +14,7 @@ class AboutMe extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       section: Section.aboutMe,
+      transitionDuration: Duration(milliseconds: transitionDefaultDuration * 2),
       builder: (data, animation) {
         assert(data.every((e) => e is AboutMeData));
 
