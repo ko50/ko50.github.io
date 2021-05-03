@@ -87,24 +87,19 @@ class _RootState extends State<Root> with SingleTickerProviderStateMixin {
       padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
       child: FittedBox(
         fit: BoxFit.fitWidth,
-        child: Consumer(
-          builder: (context, watch, _) {
-            AnimationType visibleState = watch(animationNotifier).value;
-
-            return AnimatedOpacity(
-              duration: Duration(milliseconds: transitionDefaultDuration - 200),
-              opacity: visibleState == AnimationType.appear ? 1 : 0,
-              curve: Curves.easeInOut,
-              child: Text(
-                'Hello World, My Name is ko!',
-                style: TextStyle(
-                  color: ThemeColor.PurpleBlack.color,
-                  fontSize: 35,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            );
-          },
+        child: FadeTransition(
+          opacity: CurvedAnimation(
+            curve: Curves.easeInOutExpo,
+            parent: _controller,
+          ),
+          child: Text(
+            'Hello World, My Name is ko!',
+            style: TextStyle(
+              color: ThemeColor.PurpleBlack.color,
+              fontSize: 35,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
         ),
       ),
     );

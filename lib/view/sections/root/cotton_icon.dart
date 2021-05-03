@@ -13,23 +13,40 @@ class CottonIcon extends StatelessWidget {
     return Container(
       constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
       margin: EdgeInsets.all(16.0),
-      child: RotationTransition(
-        turns: CurvedAnimation(
-          curve: Curves.easeOutBack,
-          reverseCurve: Curves.easeInOutBack,
-          parent: animation,
-        ),
+      child: DualTransitionBuilder(
+        animation: animation,
+        forwardBuilder: (context, animation, child) {
+          return RotationTransition(
+            turns: Tween<double>(begin: 1.0, end: -1.0).animate(
+              CurvedAnimation(
+                curve: Curves.easeOutBack,
+                parent: animation,
+              ),
+            ),
+            child: child,
+          );
+        },
+        reverseBuilder: (context, animation, child) {
+          return RotationTransition(
+            turns: Tween<double>(begin: -1.0, end: 1.0).animate(
+              CurvedAnimation(
+                curve: Curves.easeInBack,
+                parent: animation,
+              ),
+            ),
+            child: child,
+          );
+        },
         child: ScaleTransition(
           scale: CurvedAnimation(
             curve: Curves.easeOutBack,
-            reverseCurve: Curves.easeInOutBack,
             parent: animation,
           ),
           child: FadeTransition(
-            opacity: Tween(begin: 0.0, end: 4.0).animate(
+            opacity: Tween(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
                 curve: Interval(0.0, 0.4, curve: Curves.easeInOut),
-                reverseCurve: Interval(0.2, 0.6, curve: Curves.easeInOut),
+                reverseCurve: Interval(0.1, 0.2, curve: Curves.easeInOut),
                 parent: animation,
               ),
             ),
