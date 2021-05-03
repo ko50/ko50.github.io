@@ -13,7 +13,7 @@ class AboutMe extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       section: Section.aboutMe,
-      builder: (data) {
+      builder: (data, animation) {
         assert(data.every((e) => e is AboutMeData));
 
         return Column(
@@ -21,7 +21,11 @@ class AboutMe extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             for (int index = 0; index < data.length; index++)
-              InformationTile(data: data[index] as AboutMeData, index: index),
+              InformationTile(
+                data: data[index] as AboutMeData,
+                index: index,
+                animation: animation,
+              ),
           ],
         );
       },

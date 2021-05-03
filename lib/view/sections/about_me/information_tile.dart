@@ -11,10 +11,15 @@ import 'package:portfolio/providers.dart';
 class InformationTile extends StatefulWidget {
   final AboutMeData data;
   final int index;
+  final AnimationController animation;
 
   static const double maxWidth = 300;
 
-  InformationTile({required this.data, required this.index});
+  InformationTile({
+    required this.data,
+    required this.index,
+    required this.animation,
+  });
 
   @override
   _InformationTileState createState() => _InformationTileState();

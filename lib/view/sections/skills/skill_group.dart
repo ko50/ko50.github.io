@@ -7,10 +7,12 @@ import 'package:portfolio/view/sections/skills/skill_card.dart';
 class SkillGroup extends StatelessWidget {
   final SkillType skillType;
   final List<SkillData> skills;
+  final AnimationController animation;
 
   const SkillGroup({
     required this.skillType,
     required this.skills,
+    required this.animation,
   });
 
   @override
@@ -54,6 +56,7 @@ class SkillGroup extends StatelessWidget {
           SkillCard(
             skill: skills[i],
             animationDelay: (i + skillType.index) * 0.1,
+            animation: animation,
           ),
       ],
     );

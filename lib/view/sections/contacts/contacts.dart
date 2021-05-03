@@ -10,7 +10,7 @@ class Contacts extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       section: Section.contacts,
-      builder: (data) {
+      builder: (data, animation) {
         assert(data.every((e) => e is ContactData));
 
         return Container(
@@ -18,7 +18,10 @@ class Contacts extends StatelessWidget {
           child: ListView.builder(
             itemCount: data.length,
             itemBuilder: (context, index) {
-              return ContactCard(contact: data[index] as ContactData);
+              return ContactCard(
+                contact: data[index] as ContactData,
+                animation: animation,
+              );
             },
           ),
         );

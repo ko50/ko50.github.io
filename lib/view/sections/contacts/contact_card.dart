@@ -13,8 +13,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactCard extends StatefulWidget {
   final ContactData contact;
+  final AnimationController animation;
 
-  ContactCard({required this.contact});
+  ContactCard({
+    required this.contact,
+    required this.animation,
+  });
 
   @override
   _ContactCardState createState() => _ContactCardState();

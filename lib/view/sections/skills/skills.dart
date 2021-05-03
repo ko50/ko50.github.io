@@ -15,7 +15,7 @@ class Skills extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
         section: Section.skills,
-        builder: (data) {
+        builder: (data, animation) {
           assert(data.every((e) => e is SkillData));
 
           return Consumer(
@@ -26,8 +26,10 @@ class Skills extends StatelessWidget {
                 child: Container(
                   constraints: BoxConstraints.loose(Size.fromWidth(1000)),
                   child: screen == ScreenType.desktop
-                      ? _content(data.whereType<SkillData>().toList())
-                      : _scaledContent(data.whereType<SkillData>().toList()),
+                      ? _content(
+                          data.whereType<SkillData>().toList(), animation)
+                      : _scaledContent(
+                          data.whereType<SkillData>().toList(), animation),
                 ),
               );
             },
@@ -35,7 +37,7 @@ class Skills extends StatelessWidget {
         });
   }
 
-  ListView _scaledContent(List<SkillData> data) {
+  ListView _scaledContent(List<SkillData> data, AnimationController animation) {
     return ListView.builder(
       itemCount: SkillType.values.length,
       itemBuilder: (context, index) {
@@ -46,13 +48,14 @@ class Skills extends StatelessWidget {
           child: SkillGroup(
             skillType: type,
             skills: data.where((skill) => skill.type == type).toList(),
+            animation: animation,
           ),
         );
       },
     );
   }
 
-  Wrap _content(List<SkillData> data) {
+  Wrap _content(List<SkillData> data, AnimationController animation) {
     return Wrap(
       alignment: WrapAlignment.start,
       crossAxisAlignment: WrapCrossAlignment.start,
@@ -65,6 +68,7 @@ class Skills extends StatelessWidget {
               child: SkillGroup(
                 skillType: type,
                 skills: data.where((skill) => skill.type == type).toList(),
+                animation: animation,
               ),
             ),
           ),

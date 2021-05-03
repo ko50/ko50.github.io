@@ -10,7 +10,7 @@ class Works extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       section: Section.works,
-      builder: (data) {
+      builder: (data, animation) {
         assert(data.every((e) => e is WorkData));
 
         return Container(
@@ -20,6 +20,7 @@ class Works extends StatelessWidget {
             itemBuilder: (context, index) => WorkCard(
               work: data[index] as WorkData,
               index: index,
+              animation: animation,
             ),
           ),
         );

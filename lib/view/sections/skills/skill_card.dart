@@ -12,10 +12,12 @@ import 'package:portfolio/providers.dart';
 class SkillCard extends StatelessWidget {
   final SkillData skill;
   final double animationDelay;
+  final AnimationController animation;
 
   const SkillCard({
     required this.skill,
     required this.animationDelay,
+    required this.animation,
   });
 
   @override

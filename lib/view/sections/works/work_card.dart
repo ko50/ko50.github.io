@@ -14,8 +14,13 @@ import 'package:portfolio/providers.dart';
 class WorkCard extends StatefulWidget {
   final WorkData work;
   final int index;
+  final AnimationController animation;
 
-  const WorkCard({required this.work, required this.index});
+  const WorkCard({
+    required this.work,
+    required this.index,
+    required this.animation,
+  });
 
   @override
   _WorkCardState createState() => _WorkCardState();
