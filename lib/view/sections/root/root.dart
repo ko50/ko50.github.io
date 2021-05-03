@@ -8,27 +8,59 @@ import 'package:portfolio/providers.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/view/sections/root/cotton_icon.dart';
 
-class Root extends StatelessWidget {
+class Root extends StatefulWidget {
+  @override
+  _RootState createState() => _RootState();
+}
+
+class _RootState extends State<Root> with SingleTickerProviderStateMixin {
+  late final AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: Duration(milliseconds: transitionDefaultDuration * 2),
+      vsync: this,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, detail) {
-        return Container(
-          constraints: BoxConstraints.expand(),
-          decoration: _backgroundStyle(),
-          child: LayoutBuilder(
-            builder: (context, detail) {
-              return SingleChildScrollView(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(minHeight: detail.maxHeight),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [CottonIcon(), _introduction()],
-                  ),
-                ),
-              );
-            },
-          ),
+    return Consumer(
+      builder: (context, watch, _) {
+        final visibilityState = watch(animationNotifier).value;
+
+        visibilityState == AnimationType.appear
+            ? _controller.forward()
+            : _controller.reverse();
+
+        return LayoutBuilder(
+          builder: (context, detail) {
+            return Container(
+              constraints: BoxConstraints.expand(),
+              decoration: _backgroundStyle(),
+              child: LayoutBuilder(
+                builder: (context, detail) {
+                  return SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: detail.maxHeight),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [CottonIcon(_controller), _introduction()],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
         );
       },
     );
