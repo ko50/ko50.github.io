@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:portfolio/controller/transition_controller.dart';
+import 'package:portfolio/controller/section_routing_controller.dart';
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/portfolio_api_data.dart';
@@ -68,7 +68,7 @@ class SectionContainer extends StatelessWidget {
   }
 
   Widget _child() {
-    final List<PortfolioAPIData> data = TransitionController.displayedData;
+    final List<PortfolioAPIData> data = SectionRoutingController.displayedData;
 
     return data.isEmpty ? NonDataTelop() : builder(data);
   }

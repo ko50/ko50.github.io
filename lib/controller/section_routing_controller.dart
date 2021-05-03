@@ -5,7 +5,7 @@ import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/model/portfolio_api_data.dart';
 
-class TransitionController {
+class SectionRoutingController {
   static late List<PortfolioAPIData> displayedData;
 
   bool initalized = false;

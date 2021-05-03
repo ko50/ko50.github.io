@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/controller/transition_controller.dart';
+import 'package:portfolio/controller/section_routing_controller.dart';
 
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
@@ -17,7 +17,7 @@ class SectionTransitionTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, watch, _) {
-      TransitionController controller = watch(transitionController);
+      SectionRoutingController controller = watch(transitionController);
       final displayedNotifier = watch(displayedSectionIndex);
       bool focused = displayedNotifier.value == transitionTarget.index;
 

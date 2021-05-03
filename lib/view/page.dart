@@ -7,7 +7,7 @@ import 'package:portfolio/providers.dart';
 import 'package:portfolio/view/component/footer/footer.dart';
 import 'package:portfolio/view/component/header/header.dart';
 import 'package:portfolio/view/component/drawer/drawer.dart';
-import 'package:portfolio/view/sections/section_router.dart';
+import 'package:portfolio/view/sections/section_view_changer.dart';
 
 class RootPage extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class RootPage extends StatelessWidget {
         return Scaffold(
           appBar: Header(),
           endDrawer: screen == ScreenType.desktop ? null : ResponsiveDrawer(),
-          body: SectionRouter(),
+          body: SectionViewChanger(),
           bottomNavigationBar: Footer(),
         );
       },

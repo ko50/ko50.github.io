@@ -10,12 +10,12 @@ import 'package:portfolio/view/sections/root/root.dart';
 import 'package:portfolio/view/sections/skills/skills.dart';
 import 'package:portfolio/view/sections/works/works.dart';
 
-class SectionRouter extends StatefulWidget {
+class SectionViewChanger extends StatefulWidget {
   @override
-  _SectionRouterState createState() => _SectionRouterState();
+  _SectionViewChangerState createState() => _SectionViewChangerState();
 }
 
-class _SectionRouterState extends State<SectionRouter> {
+class _SectionViewChangerState extends State<SectionViewChanger> {
   @override
   Widget build(BuildContext context) {
     return Consumer(
