@@ -4,9 +4,9 @@ import 'dart:io';
 import 'package:http/http.dart' as http;
 
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/model/model_base.dart';
+import 'package:portfolio/model/portfolio_api_data.dart';
 
-class WorkData implements ModelBase {
+class WorkData implements PortfolioAPIData {
   final String name;
   final String description;
   final String snapshotPath;

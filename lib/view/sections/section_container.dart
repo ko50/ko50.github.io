@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:portfolio/controller/transition_controller.dart';
 import 'package:portfolio/enum/theme_colors.dart';
-import 'package:portfolio/model/model_base.dart';
+import 'package:portfolio/model/portfolio_api_data.dart';
 import 'package:portfolio/view/component/common/non_data_telop.dart';
 
 class SectionContainer extends StatelessWidget {
   final String title;
   final String subTitle;
-  final Widget Function(List<ModelBase>) builder;
+  final Widget Function(List<PortfolioAPIData>) builder;
 
   SectionContainer({
     required this.title,
@@ -69,7 +69,7 @@ class SectionContainer extends StatelessWidget {
   }
 
   Widget _child() {
-    final List<ModelBase> data = TransitionController.displayedData;
+    final List<PortfolioAPIData> data = TransitionController.displayedData;
 
     return data.isEmpty ? NonDataTelop() : builder(data);
   }

@@ -1,6 +1,6 @@
 import 'package:portfolio/model/about_me.dart';
 import 'package:portfolio/model/contacts.dart';
-import 'package:portfolio/model/model_base.dart';
+import 'package:portfolio/model/portfolio_api_data.dart';
 import 'package:portfolio/model/skills.dart';
 import 'package:portfolio/model/works.dart';
 
@@ -28,7 +28,7 @@ extension SectionExtension on Section {
     }
   }
 
-  Future<List<ModelBase>> Function() get fetchData {
+  Future<List<PortfolioAPIData>> Function() get fetchData {
     switch (this) {
       case Section.root:
         return () async => [];

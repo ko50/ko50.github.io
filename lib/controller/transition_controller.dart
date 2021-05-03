@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/sections.dart';
-import 'package:portfolio/model/model_base.dart';
+import 'package:portfolio/model/portfolio_api_data.dart';
 
 class TransitionController {
-  static late List<ModelBase> displayedData;
+  static late List<PortfolioAPIData> displayedData;
 
   bool initalized = false;
 

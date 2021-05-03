@@ -5,9 +5,9 @@ import 'package:http/http.dart' as http;
 
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/model/enum/skill_type.dart';
-import 'package:portfolio/model/model_base.dart';
+import 'package:portfolio/model/portfolio_api_data.dart';
 
-class SkillData implements ModelBase {
+class SkillData implements PortfolioAPIData {
   final String name;
   final String description;
   final String logoPath;
