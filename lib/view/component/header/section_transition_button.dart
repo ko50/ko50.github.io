@@ -65,6 +65,6 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
               ? ThemeColor.Background.color
               : ThemeColor.WhityPurple.color,
         ),
-        child: Text(widget.transitionTarget.text),
+        child: Text(widget.transitionTarget.title),
       );
 }

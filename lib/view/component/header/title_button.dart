@@ -20,7 +20,7 @@ class TitleButton extends StatelessWidget {
           child: GestureDetector(
             onTap: () => controller.transition(Section.root),
             child: Text(
-              Section.values[0].text,
+              Section.values[0].title,
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.w900,

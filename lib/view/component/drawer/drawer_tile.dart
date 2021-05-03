@@ -69,7 +69,7 @@ class SectionTransitionTile extends StatelessWidget {
           fontSize: 20,
         ),
         child: Text(
-          transitionTarget.text,
+          transitionTarget.title,
         ),
       ),
     );

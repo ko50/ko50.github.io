@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/enum/sections.dart';
 
 import 'package:portfolio/model/contacts.dart';
 import 'package:portfolio/view/sections/contacts/contact_card.dart';
@@ -8,8 +9,7 @@ class Contacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-      title: 'Contacts',
-      subTitle: '連絡',
+      section: Section.contacts,
       builder: (data) {
         assert(data.every((e) => e is ContactData));
 

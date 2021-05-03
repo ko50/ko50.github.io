@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/controller/transition_controller.dart';
+import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/portfolio_api_data.dart';
 import 'package:portfolio/view/component/common/non_data_telop.dart';
 
 class SectionContainer extends StatelessWidget {
-  final String title;
-  final String subTitle;
+  final Section section;
   final Widget Function(List<PortfolioAPIData>) builder;
 
   SectionContainer({
-    required this.title,
-    required this.subTitle,
-    required this.builder,
+    required this.section,
+    required this.builder, 
   });
 
   @override
@@ -45,7 +44,7 @@ class SectionContainer extends StatelessWidget {
         border: Border(bottom: BorderSide(color: ThemeColor.PurpleBlack.color)),
       ),
       child: Text(
-        title,
+        section.title,
         style: TextStyle(
           fontSize: 35,
           fontWeight: FontWeight.w700,
@@ -59,7 +58,7 @@ class SectionContainer extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 32, right: 32.0, left: 32.0),
       child: Text(
-        subTitle,
+        section.subTitle,
         style: TextStyle(
           color: ThemeColor.PurpleBlack.color,
           fontSize: 15,

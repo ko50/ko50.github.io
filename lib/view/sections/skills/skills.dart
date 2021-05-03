@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/screen_type.dart';
+import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/model/enum/skill_type.dart';
 import 'package:portfolio/model/skills.dart';
 import 'package:portfolio/providers.dart';
@@ -13,8 +14,7 @@ class Skills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-        title: 'Skills',
-        subTitle: 'できること',
+        section: Section.skills,
         builder: (data) {
           assert(data.every((e) => e is SkillData));
 

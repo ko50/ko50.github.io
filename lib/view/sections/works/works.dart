@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/model/works.dart';
 import 'package:portfolio/view/sections/section_container.dart';
 import 'package:portfolio/view/sections/works/work_card.dart';
@@ -8,8 +9,7 @@ class Works extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-      title: 'Works',
-      subTitle: 'やったこと',
+      section: Section.works,
       builder: (data) {
         assert(data.every((e) => e is WorkData));
 

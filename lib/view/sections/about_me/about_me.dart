@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:portfolio/controller/transition_controller.dart';
+import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/model/about_me.dart';
 import 'package:portfolio/model/portfolio_api_data.dart';
 import 'package:portfolio/view/sections/about_me/information_tile.dart';
@@ -11,8 +12,7 @@ class AboutMe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SectionContainer(
-      title: 'About Me',
-      subTitle: '自己紹介',
+      section: Section.aboutMe,
       builder: (data) {
         assert(data.every((e) => e is AboutMeData));
 
