@@ -14,7 +14,7 @@ class AboutMe extends StatelessWidget {
   Widget build(BuildContext context) {
     return SectionContainer(
       section: Section.aboutMe,
-      transitionDuration: Duration(milliseconds: transitionDefaultDuration * 2),
+      appearDuration: Duration(milliseconds: transitionDefaultDuration * 2),
       builder: (data, animation) {
         assert(data.every((e) => e is AboutMeData));
 

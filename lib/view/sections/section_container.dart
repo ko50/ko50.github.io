@@ -12,14 +12,16 @@ import 'package:portfolio/view/component/common/non_data_telop.dart';
 
 class SectionContainer extends StatefulWidget {
   final Section section;
-  final Duration transitionDuration;
+  final Duration appearDuration;
+  final Duration? hideDuration;
   final Widget Function(List<PortfolioAPIData>, AnimationController) builder;
 
   SectionContainer({
     required this.section,
     required this.builder,
-    this.transitionDuration =
+    this.appearDuration =
         const Duration(milliseconds: transitionDefaultDuration),
+    this.hideDuration,
   });
 
   @override
@@ -33,8 +35,11 @@ class _SectionContainerState extends State<SectionContainer>
   @override
   void initState() {
     super.initState();
-    _controller =
-        AnimationController(vsync: this, duration: widget.transitionDuration);
+    _controller = AnimationController(
+      vsync: this,
+      duration: widget.appearDuration,
+      reverseDuration: widget.hideDuration,
+    );
   }
 
   @override
