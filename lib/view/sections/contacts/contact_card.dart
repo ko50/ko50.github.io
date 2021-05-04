@@ -66,6 +66,7 @@ class _ContactCardState extends State<ContactCard>
             children: [
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 32.0),
+                margin: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
                 constraints: BoxConstraints(maxWidth: 400),
                 decoration: BoxDecoration(
                   border: Border.all(color: ThemeColor.PurpleBlack.color),
