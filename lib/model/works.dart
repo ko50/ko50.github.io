@@ -1,4 +1,3 @@
-
 import 'package:portfolio/model/portfolio_api_data.dart';
 
 class WorkData implements PortfolioAPIData {

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/model/works.dart';
+import 'package:flutter/rendering.dart' show SystemMouseCursors;
 
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:portfolio/constants.dart';
-import 'package:portfolio/enum/animation_type.dart';
+import 'package:portfolio/model/works.dart';
 import 'package:portfolio/enum/theme_colors.dart';
-import 'package:portfolio/providers.dart';
 
 class WorkCard extends StatefulWidget {
   final WorkData work;
@@ -37,57 +32,66 @@ class _WorkCardState extends State<WorkCard> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _launchLink,
-      child: Consumer(
-        builder: (context, watch, _) {
-          final visibility =
-              watch(animationNotifier).value == AnimationType.appear;
-
-          return AnimatedOpacity(
-            duration: Duration(milliseconds: transitionDefaultDuration + 200),
-            opacity: visibility ? 1 : 0,
-            child: MouseRegion(
-              onEnter: (_) => setState(() => _hovered = true),
-              onExit: (_) => setState(() => _hovered = false),
-              cursor: SystemMouseCursors.click,
-              child: AnimatedContainer(
-                duration: Duration(milliseconds: transitionDefaultDuration),
-                curve: Interval(
-                  widget.index * 0.1,
-                  1.0,
-                  curve: Curves.easeInOutBack,
-                ),
-                transform: Matrix4.diagonal3Values(1, visibility ? 1 : 0.1, 1),
-                constraints: BoxConstraints(maxHeight: 500, maxWidth: 600),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 32.0),
+      constraints: BoxConstraints(maxWidth: 600),
+      child: ScaleTransition(
+        scale: CurvedAnimation(
+          curve: Interval(0.0, 0.8, curve: Curves.easeOutQuint),
+          parent: widget.animation,
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              child: Container(
                 decoration: BoxDecoration(
-                  color: _hovered
-                      ? ThemeColor.PurpleBlack.color
-                      : ThemeColor.Background.color,
+                  color: ThemeColor.PurpleBlack.color,
                   borderRadius: BorderRadius.circular(5),
-                  border: Border.all(color: ThemeColor.PurpleBlack.color),
-                  boxShadow: [
-                    BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0)
-                  ],
-                ),
-                child: Column(
-                  children: [Expanded(child: _snapshot()), _information()],
                 ),
               ),
             ),
-          );
-        },
+            ScaleTransition(
+              scale: CurvedAnimation(
+                curve: Interval(0.2, 1.0, curve: Curves.easeOutQuint),
+                parent: widget.animation,
+              ),
+              child: GestureDetector(
+                onTap: _launchLink,
+                child: MouseRegion(
+                  onEnter: (_) => setState(() => _hovered = true),
+                  onExit: (_) => setState(() => _hovered = false),
+                  cursor: SystemMouseCursors.click,
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 200),
+                    decoration: BoxDecoration(
+                      color: _hovered
+                          ? ThemeColor.PurpleBlack.color
+                          : ThemeColor.Background.color,
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(color: ThemeColor.PurpleBlack.color),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [_screenshot(), ..._information()],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Container _snapshot() {
+  Widget _screenshot() {
     return Container(
       padding: EdgeInsets.zero,
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        boxShadow: [BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 2)],
-      ),
       child: Image.asset(
         widget.work.snapshotPath,
         alignment: Alignment.topCenter,
@@ -96,48 +100,56 @@ class _WorkCardState extends State<WorkCard> {
     );
   }
 
-  Widget _information() {
-    return Container(
-      padding: EdgeInsets.all(16.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AnimatedDefaultTextStyle(
-            duration: Duration(milliseconds: 200),
-            style: TextStyle(
-              color: _hovered
-                  ? ThemeColor.Background.color
-                  : ThemeColor.PurpleBlack.color,
-              fontWeight: FontWeight.w700,
-              fontSize: 22,
-            ),
-            child: Text(widget.work.name),
+  List<Widget> _information() {
+    return [
+      Padding(
+        padding: const EdgeInsets.only(
+          top: 16.0,
+          right: 16.0,
+          left: 16.0,
+        ),
+        child: AnimatedDefaultTextStyle(
+          duration: Duration(milliseconds: 200),
+          style: TextStyle(
+            color: _hovered
+                ? ThemeColor.Background.color
+                : ThemeColor.PurpleBlack.color,
+            fontWeight: FontWeight.w700,
+            fontSize: 22,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 8.0),
-            child: AnimatedDefaultTextStyle(
-              duration: Duration(milliseconds: 200),
-              style: TextStyle(
-                fontSize: 13,
-                color: _hovered ? ThemeColor.Background.color : Colors.black,
-              ),
-              child: Text(widget.work.description),
-            ),
-          ),
-          AnimatedDefaultTextStyle(
-            duration: Duration(milliseconds: 200),
-            style: TextStyle(
-              color: _hovered
-                  ? ThemeColor.Background.color
-                  : ThemeColor.PurpleBlack.color,
-              fontWeight: FontWeight.w300,
-              fontSize: 12,
-            ),
-            child: Text('Tag: ${widget.work.tags.join(', ')}'),
-          ),
-        ],
+          child: Text(widget.work.name),
+        ),
       ),
-    );
+      Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: AnimatedDefaultTextStyle(
+          duration: Duration(milliseconds: 200),
+          style: TextStyle(
+            fontSize: 13,
+            color: _hovered ? ThemeColor.Background.color : Colors.black,
+          ),
+          child: Text(widget.work.description),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(
+          top: 8.0,
+          right: 16.0,
+          bottom: 16.0,
+          left: 16.0,
+        ),
+        child: AnimatedDefaultTextStyle(
+          duration: Duration(milliseconds: 200),
+          style: TextStyle(
+            color: _hovered
+                ? ThemeColor.Background.color
+                : ThemeColor.PurpleBlack.color,
+            fontWeight: FontWeight.w300,
+            fontSize: 12,
+          ),
+          child: Text('Tag: ${widget.work.tags.join(', ')}'),
+        ),
+      ),
+    ];
   }
 }
