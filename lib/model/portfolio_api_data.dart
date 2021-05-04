@@ -12,7 +12,14 @@ abstract class PortfolioAPIData {
     print('$nameSpace: Fetcing data');
 
     final Uri url = Uri.parse('$apiUriRoot/$nameSpace');
-    final http.Response response = await http.get(url);
+    late final http.Response response;
+
+    try {
+      response = await http.get(url);
+    } catch (_) {
+      print('$nameSpace: An error was occured in fetching data');
+      return [];
+    }
 
     print('$nameSpace: ${response.statusCode}');
     print('$nameSpace: ${response.body}');

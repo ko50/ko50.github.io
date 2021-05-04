@@ -110,7 +110,7 @@ class _SectionContainerState extends State<SectionContainer>
             : _controller.reverse();
 
         return data.isEmpty
-            ? NonDataTelop()
+            ? NonDataTelop(animation: _controller)
             : widget.builder(data, _controller);
       },
     );
