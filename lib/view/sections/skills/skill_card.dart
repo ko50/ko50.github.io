@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:portfolio/constants.dart';
-import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/skills.dart';
-import 'package:portfolio/providers.dart';
 
 class SkillCard extends StatelessWidget {
   final SkillData skill;
@@ -22,36 +18,67 @@ class SkillCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(builder: (context, watch, _) {
-      bool visibility = watch(animationNotifier).value == AnimationType.appear;
-
-      return AnimatedOpacity(
-        duration: Duration(milliseconds: transitionDefaultDuration),
-        curve: Interval(animationDelay + 0.2, 1.0),
-        opacity: visibility ? 1 : 0,
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: transitionDefaultDuration),
-          curve: Interval(animationDelay, 1.0, curve: Curves.easeInOutBack),
-          margin: EdgeInsets.all(16.0),
-          padding: EdgeInsets.all(16.0),
-          transform: Matrix4.diagonal3Values(
-            visibility ? 1 : 0.1,
-            visibility ? 1 : 0.1,
-            visibility ? 1 : 0.1,
+    return LayoutBuilder(
+      builder: (context, detail) {
+        return ScaleTransition(
+          alignment: Alignment.topLeft,
+          scale: CurvedAnimation(
+            curve: Interval(animationDelay, 1.0, curve: Curves.easeOutBack),
+            reverseCurve: Curves.easeOutBack,
+            parent: animation,
           ),
-          decoration: BoxDecoration(
-            color: ThemeColor.Background.color,
-            boxShadow: [
-              BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5.0),
-            ],
+          child: Container(
+            margin: EdgeInsets.symmetric(vertical: 16.0),
+            width: detail.maxWidth,
+            child: Stack(
+              children: [
+                Positioned(
+                  top: 10.0,
+                  right: 0.0,
+                  bottom: 0.0,
+                  left: 10.0,
+                  child: Container(color: ThemeColor.PurpleBlack.color),
+                ),
+                Container(
+                  margin: EdgeInsets.only(bottom: 10.0, right: 10.0),
+                  padding: EdgeInsets.all(16.0),
+                  width: detail.maxWidth - 10.0,
+                  decoration: BoxDecoration(
+                    color: ThemeColor.Background.color,
+                    border: Border.all(
+                      width: 0.5,
+                      color: ThemeColor.PurpleBlack.color,
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [_logo(), _name(), _description()],
+                  ),
+                ),
+                Positioned(
+                  top: 0.0,
+                  right: 9.9,
+                  bottom: 9.9,
+                  left: 0.0,
+                  child: FadeTransition(
+                    opacity: Tween<double>(begin: 1.0, end: 0.0).animate(
+                      CurvedAnimation(
+                        curve: Interval(animationDelay + 0.2, 1.0,
+                            curve: Curves.easeOutExpo),
+                        reverseCurve: Curves.easeOutExpo,
+                        parent: animation,
+                      ),
+                    ),
+                    child: Container(color: ThemeColor.PurpleBlack.color),
+                  ),
+                ),
+              ],
+            ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [_logo(), _name(), _description()],
-          ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   SvgPicture _logo() {
