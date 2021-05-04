@@ -19,10 +19,9 @@ jobs:
       - name: Install
         run: flutter pub get
 
-      # - name: Change base url
-      #   run: |
-      #     sed -i -e "s!src=\"main.dart.js\"!src=\"portfolio-with-flutter/main.dart.js\"!" web/index.html
-      #     sed -i -e "s!href=\"manifest.json\"!href=\"portfolio-with-flutter/manifest.json\"!" web/index.html
+      - name: Change API uri
+        run: |
+          sed -i -e "s!http://localhost:8000/api/v1!!" lib/constants.dart
 
       - name: Build
         run: flutter build web
