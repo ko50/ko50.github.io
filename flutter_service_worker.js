@@ -3,11 +3,11 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "index.html": "6d217c9bb9d5aa854dc4bfbdefd171bc",
-"/": "6d217c9bb9d5aa854dc4bfbdefd171bc",
+  "index.html": "61d0e0921341916c6dd5752dc420c903",
+"/": "61d0e0921341916c6dd5752dc420c903",
 "manifest.json": "4336da5234296c3e92a8c5dae2420788",
-"main.dart.js": "21bca84788e4edbef1caee845b401bea",
-"assets/images/works/Portfolio.png": "fb21c52f179f5aa6e2d66c8df8c84ab2",
+"main.dart.js": "f011f39f11e75cc1ce1d99ee22bfa4f8",
+"assets/images/works/Portfolio.png": "b16413da2f1422a213ae7d29070eae06",
 "assets/images/cotton_circle.png": "8d73fba78ea832930fb9586e8205c213",
 "assets/images/contacts/Twitter.svg": "5c23880d6c21f45e5e8581fde45a89a1",
 "assets/images/contacts/GitHub.svg": "ce89173e3842fb91835a9cc8605a5ecc",
@@ -27,7 +27,7 @@ const RESOURCES = {
 "assets/fonts/Roboto-Thin.ttf": "321de678e592d0b8f44f1a82d7ca4b62",
 "assets/fonts/Roboto-Black.ttf": "5ebb24ee1112dd9562629375c387879a",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/assets/images/works/Portfolio.png": "fb21c52f179f5aa6e2d66c8df8c84ab2",
+"assets/assets/images/works/Portfolio.png": "b16413da2f1422a213ae7d29070eae06",
 "assets/assets/images/cotton_circle.png": "8d73fba78ea832930fb9586e8205c213",
 "assets/assets/images/contacts/Twitter.svg": "5c23880d6c21f45e5e8581fde45a89a1",
 "assets/assets/images/contacts/GitHub.svg": "ce89173e3842fb91835a9cc8605a5ecc",
