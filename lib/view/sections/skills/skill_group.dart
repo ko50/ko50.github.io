@@ -34,7 +34,7 @@ class SkillGroup extends StatelessWidget {
         parent: animation,
       ),
       child: Container(
-        margin: EdgeInsets.only(bottom: 16.0),
+        margin: const EdgeInsets.only(bottom: 16.0),
         decoration: BoxDecoration(
           border: Border.symmetric(
             vertical: BorderSide(
@@ -51,7 +51,7 @@ class SkillGroup extends StatelessWidget {
             parent: animation,
           ),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 32.0),
+            padding: const EdgeInsets.symmetric(horizontal: 32.0),
             child: FittedBox(
               fit: BoxFit.fitWidth,
               child: Text(

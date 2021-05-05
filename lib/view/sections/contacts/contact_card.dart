@@ -49,7 +49,7 @@ class _ContactCardState extends State<ContactCard>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
       child: SizeTransition(
         axis: Axis.horizontal,
         sizeFactor: CurvedAnimation(
@@ -148,7 +148,7 @@ class _ContactCardState extends State<ContactCard>
           parent: widget.animation,
         ),
         child: Padding(
-          padding: EdgeInsets.only(left: 32.0),
+          padding: const EdgeInsets.only(left: 32.0),
           child: Text(
             widget.contact.userName,
             style: TextStyle(

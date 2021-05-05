@@ -18,7 +18,7 @@ class Footer extends StatelessWidget {
             duration: footerAnimateDuration,
             curve: Curves.easeInOutExpo,
             height: expanded ? MediaQuery.of(context).size.height : 60,
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               color: ThemeColor.PurpleBlack.color,
               boxShadow: [
@@ -42,7 +42,7 @@ class Footer extends StatelessWidget {
       children: [
         Container(
           width: 25,
-          margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
+          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
           decoration: BoxDecoration(
             border: Border(top: BorderSide(color: ThemeColor.PaleGrey.color)),
           ),

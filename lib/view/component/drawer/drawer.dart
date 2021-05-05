@@ -20,7 +20,7 @@ class ResponsiveDrawer extends StatelessWidget {
 
   DrawerHeader drawerHeader() {
     return DrawerHeader(
-      margin: EdgeInsets.only(bottom: 8.0),
+      margin: const EdgeInsets.only(bottom: 8.0),
       decoration: BoxDecoration(
         color: ThemeColor.PurpleBlack.color,
         boxShadow: [BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5)],

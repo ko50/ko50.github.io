@@ -33,7 +33,7 @@ class _WorkCardState extends State<WorkCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 32.0),
+      margin: const EdgeInsets.symmetric(horizontal: 32.0),
       constraints: BoxConstraints(maxWidth: 600),
       child: ScaleTransition(
         scale: CurvedAnimation(
@@ -121,7 +121,7 @@ class _WorkCardState extends State<WorkCard> {
         ),
       ),
       Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: AnimatedDefaultTextStyle(
           duration: Duration(milliseconds: 200),
           style: TextStyle(

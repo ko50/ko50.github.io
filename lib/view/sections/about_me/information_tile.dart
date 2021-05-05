@@ -19,7 +19,7 @@ class InformationTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 8.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
       width: InformationTile.maxWidth,
       child: Stack(
         children: [
@@ -80,7 +80,7 @@ class InformationTile extends StatelessWidget {
 
   Container _content() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       // constraints: BoxConstraints(maxWidth: InformationTile.maxWidth),
       width: InformationTile.maxWidth,
       decoration: BoxDecoration(

@@ -28,7 +28,7 @@ class SkillCard extends StatelessWidget {
             parent: animation,
           ),
           child: Container(
-            margin: EdgeInsets.symmetric(vertical: 16.0),
+            margin: const EdgeInsets.symmetric(vertical: 16.0),
             width: detail.maxWidth,
             child: Stack(
               children: [
@@ -40,8 +40,8 @@ class SkillCard extends StatelessWidget {
                   child: Container(color: ThemeColor.PurpleBlack.color),
                 ),
                 Container(
-                  margin: EdgeInsets.only(bottom: 10.0, right: 10.0),
-                  padding: EdgeInsets.all(16.0),
+                  margin: const EdgeInsets.only(bottom: 10.0, right: 10.0),
+                  padding: const EdgeInsets.all(16.0),
                   width: detail.maxWidth - 10.0,
                   decoration: BoxDecoration(
                     color: ThemeColor.Background.color,
@@ -92,7 +92,7 @@ class SkillCard extends StatelessWidget {
 
   Padding _name() {
     return Padding(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Text(
         skill.name,
         style: TextStyle(

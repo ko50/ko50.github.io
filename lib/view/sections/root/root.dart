@@ -84,7 +84,7 @@ class _RootState extends State<Root> with SingleTickerProviderStateMixin {
 
   Widget _introduction() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 16.0),
       child: FittedBox(
         fit: BoxFit.fitWidth,
         child: FadeTransition(

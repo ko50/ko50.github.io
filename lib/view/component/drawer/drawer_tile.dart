@@ -41,8 +41,8 @@ class SectionTransitionTile extends StatelessWidget {
   AnimatedContainer _content(bool focused) {
     return AnimatedContainer(
       duration: drawerAnimateDuration,
-      padding: EdgeInsets.all(16.0),
-      margin: EdgeInsets.symmetric(vertical: 2.0),
+      padding: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.symmetric(vertical: 2.0),
       decoration: BoxDecoration(
         boxShadow: [
           if (focused) BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5),

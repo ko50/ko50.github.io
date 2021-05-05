@@ -12,7 +12,7 @@ class CottonIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
-      margin: EdgeInsets.all(16.0),
+      margin: const EdgeInsets.all(16.0),
       child: DualTransitionBuilder(
         animation: animation,
         forwardBuilder: (context, animation, child) {
@@ -51,7 +51,7 @@ class CottonIcon extends StatelessWidget {
               ),
             ),
             child: Container(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               decoration: _backgroundStyle(),
               child: _icon(),
             ),

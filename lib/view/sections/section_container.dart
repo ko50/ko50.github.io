@@ -56,7 +56,7 @@ class _SectionContainerState extends State<SectionContainer>
           constraints: BoxConstraints(maxHeight: detail.maxHeight),
           child: SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 64.0),
+              padding: const EdgeInsets.symmetric(vertical: 64.0),
               width: double.infinity,
               constraints: BoxConstraints(minHeight: detail.maxHeight),
               child: Column(
@@ -72,7 +72,7 @@ class _SectionContainerState extends State<SectionContainer>
 
   Container _title() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+      margin: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: ThemeColor.PurpleBlack.color)),
       ),
@@ -89,7 +89,7 @@ class _SectionContainerState extends State<SectionContainer>
 
   Container _subTitle() {
     return Container(
-      margin: EdgeInsets.only(bottom: 32, right: 32.0, left: 32.0),
+      margin: const EdgeInsets.only(bottom: 32, right: 32.0, left: 32.0),
       child: Text(
         widget.section.subTitle,
         style: TextStyle(

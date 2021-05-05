@@ -36,8 +36,8 @@ class _SectionTransitionButtonState extends State<SectionTransitionButton> {
         onExit: (_) => hoverNotifier.value = -1,
         cursor: SystemMouseCursors.click,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 8.0),
-          padding: EdgeInsets.only(bottom: 2.0),
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.only(bottom: 2.0),
           decoration: BoxDecoration(
               border: Border(
                   bottom: BorderSide(color: ThemeColor.WhityPurple.color))),
