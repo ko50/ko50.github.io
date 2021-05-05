@@ -37,9 +37,9 @@ extension SectionExtension on Section {
       case Section.skills:
         return 'Can use';
       case Section.works:
-        return 'I worked';
+        return 'I worked on';
       case Section.contacts:
-        return 'Know more';
+        return 'Access more info';
     }
   }
 

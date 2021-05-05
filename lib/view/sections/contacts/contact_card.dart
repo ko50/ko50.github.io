@@ -48,59 +48,62 @@ class _ContactCardState extends State<ContactCard>
 
   @override
   Widget build(BuildContext context) {
-    return SizeTransition(
-      axis: Axis.horizontal,
-      sizeFactor: CurvedAnimation(
-        curve: Interval(0.0, 0.4, curve: Curves.easeOutQuint),
-        reverseCurve: Interval(0.2, 0.6, curve: Curves.easeInQuint),
-        parent: widget.animation,
-      ),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        onEnter: (_) => _controller.forward(),
-        onExit: (_) => _controller.reverse(),
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: _launchLink,
-          child: Stack(
-            children: [
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 32.0),
-                margin: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
-                constraints: BoxConstraints(maxWidth: 400),
-                decoration: BoxDecoration(
-                  border: Border.all(color: ThemeColor.PurpleBlack.color),
-                ),
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [_logo(), _userName()],
-                  ),
-                ),
-              ),
-              Positioned(
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0,
-                child: FadeTransition(
-                  opacity: Tween(begin: 1.0, end: 0.0).animate(
-                    CurvedAnimation(
-                      curve: Curves.easeOutQuint,
-                      reverseCurve: Curves.easeInQuint,
-                      parent: widget.animation,
-                    ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
+      child: SizeTransition(
+        axis: Axis.horizontal,
+        sizeFactor: CurvedAnimation(
+          curve: Interval(0.0, 0.4, curve: Curves.easeOutQuint),
+          reverseCurve: Interval(0.2, 0.6, curve: Curves.easeInQuint),
+          parent: widget.animation,
+        ),
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          onEnter: (_) => _controller.forward(),
+          onExit: (_) => _controller.reverse(),
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: _launchLink,
+            child: Stack(
+              children: [
+                Container(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 32.0, vertical: 32.0),
+                  constraints: BoxConstraints(maxWidth: 400),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: ThemeColor.PurpleBlack.color),
                   ),
                   child: Container(
-                    decoration: BoxDecoration(
-                      color: ThemeColor.PurpleBlack.color,
-                      border: Border.all(color: ThemeColor.PurpleBlack.color),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [_logo(), _userName()],
                     ),
                   ),
                 ),
-              ),
-            ],
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                  left: 0,
+                  child: FadeTransition(
+                    opacity: Tween(begin: 1.0, end: 0.0).animate(
+                      CurvedAnimation(
+                        curve: Curves.easeOutQuint,
+                        reverseCurve: Curves.easeInQuint,
+                        parent: widget.animation,
+                      ),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: ThemeColor.PurpleBlack.color,
+                        border: Border.all(color: ThemeColor.PurpleBlack.color),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
