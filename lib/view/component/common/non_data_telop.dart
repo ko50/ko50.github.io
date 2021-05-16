@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/constants.dart';
 
@@ -26,7 +28,7 @@ class _NonDataTelopState extends State<NonDataTelop>
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 1),
-    )..repeat(reverse: true, period: Duration(seconds: 3));
+    )..repeat(reverse: true, period: Duration(seconds: 5));
   }
 
   @override
@@ -60,40 +62,42 @@ class _NonDataTelopState extends State<NonDataTelop>
   Widget _char(int index, String char) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1.0),
-      child: RotationTransition(
-        turns: Tween(begin: 0.0, end: 1.0).animate(
-          CurvedAnimation(
-            curve: Interval(index * 0.05, 1.0, curve: Curves.bounceOut),
-            reverseCurve: Interval(index * 0.05, 1.0, curve: Curves.bounceIn),
-            parent: _controller,
-          ),
-        ),
-        child: FadeTransition(
-          opacity: Tween(begin: 0.0, end: 1.0).animate(
+      child: Transform.rotate(
+        angle: ((pi / 18) * Random(DateTime.now().second).nextInt(20)) -
+            (pi / 4), // 10 deg * random
+        child: RotationTransition(
+          turns: Tween(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
-              curve: Interval(0.0, 0.5, curve: Curves.easeInOutBack),
-              parent: widget.animation,
+              curve: Interval(index * 0.05, 1.0, curve: Curves.bounceOut),
+              parent: _controller,
             ),
           ),
-          child: ScaleTransition(
-            scale: CurvedAnimation(
-              curve: Interval(index * 0.05, 1.0, curve: Curves.easeOutBack),
-              parent: widget.animation,
-            ),
-            child: RotationTransition(
-              turns: Tween(begin: 0.0, end: 1.0).animate(
-                CurvedAnimation(
-                  curve:
-                      Interval(index * 0.05, 1.0, curve: Curves.easeInOutBack),
-                  parent: widget.animation,
-                ),
+          child: FadeTransition(
+            opacity: Tween(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                curve: Interval(0.0, 0.5, curve: Curves.easeInOutBack),
+                parent: widget.animation,
               ),
-              child: Text(
-                char,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w100,
-                  color: ThemeColor.Grey.color,
+            ),
+            child: ScaleTransition(
+              scale: CurvedAnimation(
+                curve: Interval(index * 0.05, 1.0, curve: Curves.easeOutBack),
+                parent: widget.animation,
+              ),
+              child: RotationTransition(
+                turns: Tween(begin: 0.0, end: 1.0).animate(
+                  CurvedAnimation(
+                    curve: Interval(index * 0.05, 1.0, curve: Curves.easeInOut),
+                    parent: widget.animation,
+                  ),
+                ),
+                child: Text(
+                  char,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w100,
+                    color: ThemeColor.Grey.color,
+                  ),
                 ),
               ),
             ),
