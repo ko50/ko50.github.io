@@ -10922,28 +10922,28 @@ dk:function dk(a,b){this.a=a
 this.b=b},
 uI:function uI(){},
 XZ:function(a){return G.as0(a)},
-as0:function(a){var s=0,r=P.a2(t.j),q,p=2,o,n=[],m,l,k,j,i,h,g,f
+as0:function(a){var s=0,r=P.a2(t.j),q,p=2,o,n=[],m,l,k,j,i,h,g,f,e
 var $async$XZ=P.Y(function(b,c){if(b===1){o=c
-s=p}while(true)switch(s){case 0:h={}
+s=p}while(true)switch(s){case 0:g={}
 if(a==null){q=[]
 s=1
 break}P.ik(a+": Fetcing data")
 m=P.lb("http://34.145.87.157:8001/api/v1/"+a,0,null)
-h.a=null
-k=new G.Y_(h)
-l=new G.Y0(h)
+g.a=null
+j=new G.Y_(g)
+l=new G.Y0(g)
 p=4
-f=l
+e=l
 s=7
 return P.W(G.axp(m),$async$XZ)
-case 7:f.$1(c)
+case 7:e.$1(c)
 p=2
 s=6
 break
 case 4:p=3
-g=o
-H.R(g)
-P.ik(a+": An error was occured in fetching data")
+f=o
+k=H.R(f)
+P.ik(a+": An error ("+H.c(k)+") was occured in fetching data")
 q=[]
 s=1
 break
@@ -10951,14 +10951,14 @@ s=6
 break
 case 3:s=2
 break
-case 6:P.ik(a+": "+k.$0().b)
-h=a+": "
-i=k.$0()
-P.ik(h+B.axh(U.av3(i.e).c.a.i(0,"charset")).cp(0,i.x))
-if(k.$0().b!==200){P.ik(a+": Failed to fetch data")
+case 6:P.ik(a+": "+j.$0().b)
+g=a+": "
+h=j.$0()
+P.ik(g+B.axh(U.av3(h.e).c.a.i(0,"charset")).cp(0,h.x))
+if(j.$0().b!==200){P.ik(a+": Failed to fetch data")
 q=[]
 s=1
-break}q=C.ba.cp(0,C.L.cp(0,k.$0().x))
+break}q=C.ba.cp(0,C.L.cp(0,j.$0().x))
 s=1
 break
 case 1:return P.a0(q,r)
