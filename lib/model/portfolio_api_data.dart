@@ -16,8 +16,8 @@ abstract class PortfolioAPIData {
 
     try {
       response = await http.get(url);
-    } catch (_) {
-      print('$nameSpace: An error was occured in fetching data');
+    } catch (e) {
+      print('$nameSpace: An error ($e) was occured in fetching data');
       return [];
     }
 
