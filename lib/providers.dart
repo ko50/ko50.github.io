@@ -19,6 +19,9 @@ final ChangeNotifierProvider<ValueNotifier<bool>> isFooterExpanded =
   (ref) => ref.watch(transitionController).isFooterExpanded,
 );
 
+final ChangeNotifierProvider<ValueNotifier<bool>> loading =
+    ChangeNotifierProvider((ref)=>ref.watch(transitionController).loading);
+
 final ChangeNotifierProvider<ValueNotifier<AnimationType>> animationNotifier =
     ChangeNotifierProvider(
   (ref) => ref.watch(transitionController).animationNotifier,

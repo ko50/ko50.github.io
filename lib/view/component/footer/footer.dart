@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/providers.dart';
+import 'package:portfolio/view/component/footer/animated_copyright.dart';
 
 class Footer extends StatelessWidget {
   @override
@@ -29,33 +30,10 @@ class Footer extends StatelessWidget {
                     BorderSide(color: ThemeColor.WhityPurple.color, width: 4.0),
               ),
             ),
-            child: Center(child: copyRight()),
+            child: Center(child: AnimatedCopyright()),
           ),
         );
       },
-    );
-  }
-
-  Column copyRight() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 25,
-          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-          decoration: BoxDecoration(
-            border: Border(top: BorderSide(color: ThemeColor.PaleGrey.color)),
-          ),
-        ),
-        Text(
-          '© 2020 ko',
-          style: TextStyle(
-            color: ThemeColor.PaleGrey.color,
-            fontWeight: FontWeight.w100,
-            fontSize: 10,
-          ),
-        ),
-      ],
     );
   }
 }
