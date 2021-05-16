@@ -75,12 +75,10 @@ class _NonDataTelopState extends State<NonDataTelop>
               parent: widget.animation,
             ),
           ),
-          child: SlideTransition(
-            position: Tween(begin: Offset(50.0, 0.0), end: Offset.zero).animate(
-              CurvedAnimation(
-                curve: Interval(index * 0.05, 1.0, curve: Curves.easeOutBack),
-                parent: widget.animation,
-              ),
+          child: ScaleTransition(
+            scale: CurvedAnimation(
+              curve: Interval(index * 0.05, 1.0, curve: Curves.easeOutBack),
+              parent: widget.animation,
             ),
             child: RotationTransition(
               turns: Tween(begin: 0.0, end: 1.0).animate(
