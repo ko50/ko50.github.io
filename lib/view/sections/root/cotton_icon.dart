@@ -19,7 +19,7 @@ class CottonIcon extends StatelessWidget {
           return RotationTransition(
             turns: Tween<double>(begin: 1.0, end: -1.0).animate(
               CurvedAnimation(
-                curve: Curves.easeOutBack,
+                curve: Curves.easeOutQuint,
                 parent: animation,
               ),
             ),
@@ -30,7 +30,7 @@ class CottonIcon extends StatelessWidget {
           return RotationTransition(
             turns: Tween<double>(begin: -1.0, end: 1.0).animate(
               CurvedAnimation(
-                curve: Curves.easeInBack,
+                curve: Curves.easeOutQuart,
                 parent: animation,
               ),
             ),
@@ -39,13 +39,14 @@ class CottonIcon extends StatelessWidget {
         },
         child: ScaleTransition(
           scale: CurvedAnimation(
-            curve: Curves.easeOutBack,
+            curve: Interval(0.0, 1.0, curve: Curves.easeOutBack),
+            reverseCurve: Interval(0.2, 1.0, curve: Curves.easeOutBack),
             parent: animation,
           ),
           child: FadeTransition(
             opacity: Tween(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
-                curve: Interval(0.0, 0.4, curve: Curves.easeInOut),
+                curve: Interval(0.0, 0.2, curve: Curves.easeInOut),
                 reverseCurve: Interval(0.1, 0.2, curve: Curves.easeInOut),
                 parent: animation,
               ),

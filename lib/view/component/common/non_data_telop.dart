@@ -63,7 +63,7 @@ class _NonDataTelopState extends State<NonDataTelop>
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 1.0),
       child: Transform.rotate(
-        angle: ((pi / 18) * Random(DateTime.now().second).nextInt(20)) -
+        angle: ((pi / 18) * Random(DateTime.now().second + index).nextInt(20)) -
             (pi / 4), // 10 deg * random
         child: RotationTransition(
           turns: Tween(begin: 0.0, end: 1.0).animate(
