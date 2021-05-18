@@ -16,6 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "ko's Portfolio",
+      locale: const Locale('jp'),
+      supportedLocales: [const Locale("en", "US"), const Locale("ja", "JP")],
       theme: ThemeData(
         primarySwatch: Colors.blue,
         canvasColor: ThemeColor.Background.color,
