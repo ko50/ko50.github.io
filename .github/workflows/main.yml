@@ -20,11 +20,8 @@ jobs:
         run: flutter pub get
 
       - name: Change API uri
-        env:
-          PRODUCTION_API_BASE_URI: ${{ secrets.PRODUCTION_API_BASE_URI }}
         run: |
-          uri=$PRODUCTION_API_BASE_URI
-          sed -i -e "s!http://localhost:8000/api/v1!$uri!" lib/constants.dart
+          sed -i -e "s!http://localhost:8000!https://api.ko50.dev!" lib/constants.dart
 
       - name: Build
         run: flutter build web
