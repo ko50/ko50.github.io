@@ -37,9 +37,9 @@ const RESOURCES = {
 "assets/fonts/Roboto-Thin.ttf": "321de678e592d0b8f44f1a82d7ca4b62",
 "assets/fonts/Roboto-Regular.ttf": "11eabca2251325cfc5589c9c6fb57b46",
 "version.json": "426313f2f3133c2f20415344c4a22df3",
-"main.dart.js": "124f3207a330342e5619d38fff9c7050",
-"index.html": "fc1e12c4e54c6d5998966c74f251d2c8",
-"/": "fc1e12c4e54c6d5998966c74f251d2c8",
+"main.dart.js": "c5b808293c806dcbe0ef60432d707c93",
+"index.html": "07dc48ef433f2bfbf9c8ed737423596d",
+"/": "07dc48ef433f2bfbf9c8ed737423596d",
 "manifest.json": "4336da5234296c3e92a8c5dae2420788"
 };
 

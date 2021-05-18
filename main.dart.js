@@ -10980,7 +10980,7 @@ s=p}while(true)switch(s){case 0:g={}
 if(a==null){q=[]
 s=1
 break}P.im(a+": Fetcing data")
-m=P.lg("http://34.145.87.157:8001/api/v1/"+a,0,null)
+m=P.lg("https://api.ko50.dev/api/v1/"+a,0,null)
 g.a=null
 j=new G.Yf(g)
 l=new G.Yg(g)
