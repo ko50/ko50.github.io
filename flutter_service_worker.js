@@ -38,9 +38,9 @@ const RESOURCES = {
 "assets/fonts/Roboto-Regular.ttf": "11eabca2251325cfc5589c9c6fb57b46",
 "version.json": "426313f2f3133c2f20415344c4a22df3",
 "CNAME": "7e3c23e6399887987831e82dd485a875",
-"main.dart.js": "78170040d2ae48b259b128baef020f4e",
-"index.html": "863169f1a7dc7d80dde76a8b8a29d456",
-"/": "863169f1a7dc7d80dde76a8b8a29d456",
+"main.dart.js": "0d8b7ec19b1719c3cb277f957867b9e4",
+"index.html": "daccb4edea6475a4225523cf6f2cf29d",
+"/": "daccb4edea6475a4225523cf6f2cf29d",
 "manifest.json": "4336da5234296c3e92a8c5dae2420788"
 };
 
