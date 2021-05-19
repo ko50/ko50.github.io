@@ -27,9 +27,9 @@ const RESOURCES = {
 "assets/images/works/Portfolio.png": "b16413da2f1422a213ae7d29070eae06",
 "assets/FontManifest.json": "85e4a8d67b6378dbf543a8cc101107b6",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
-"assets/NOTICES": "e071f2af0fd23354313220862ceb4e6c",
+"assets/NOTICES": "cf4312c6e153a8e433315e392e306750",
 "assets/AssetManifest.json": "0f7a585497cf25da7730d6fddfb9010a",
-"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
+"assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
 "assets/fonts/Roboto-Light.ttf": "88823c2015ffd5fa89d567e17297a137",
 "assets/fonts/Roboto-Medium.ttf": "58aef543c97bbaf6a9896e8484456d98",
 "assets/fonts/Roboto-Black.ttf": "5ebb24ee1112dd9562629375c387879a",
@@ -37,9 +37,10 @@ const RESOURCES = {
 "assets/fonts/Roboto-Thin.ttf": "321de678e592d0b8f44f1a82d7ca4b62",
 "assets/fonts/Roboto-Regular.ttf": "11eabca2251325cfc5589c9c6fb57b46",
 "version.json": "426313f2f3133c2f20415344c4a22df3",
-"main.dart.js": "c5b808293c806dcbe0ef60432d707c93",
-"index.html": "40f6f09447bea72c632ae75d9c5174c5",
-"/": "40f6f09447bea72c632ae75d9c5174c5",
+"CNAME": "7e3c23e6399887987831e82dd485a875",
+"main.dart.js": "78170040d2ae48b259b128baef020f4e",
+"index.html": "863169f1a7dc7d80dde76a8b8a29d456",
+"/": "863169f1a7dc7d80dde76a8b8a29d456",
 "manifest.json": "4336da5234296c3e92a8c5dae2420788"
 };
 
@@ -58,7 +59,7 @@ self.addEventListener("install", (event) => {
   return event.waitUntil(
     caches.open(TEMP).then((cache) => {
       return cache.addAll(
-        CORE.map((value) => new Request(value + '?revision=' + RESOURCES[value], {'cache': 'reload'})));
+        CORE.map((value) => new Request(value, {'cache': 'reload'})));
     })
   );
 });
