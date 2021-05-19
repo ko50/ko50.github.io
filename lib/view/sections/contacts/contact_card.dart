@@ -150,7 +150,7 @@ class _ContactCardState extends State<ContactCard>
         child: Padding(
           padding: const EdgeInsets.only(left: 32.0),
           child: Text(
-            widget.contact.userName,
+            '@${widget.contact.userName}',
             style: TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.w300,

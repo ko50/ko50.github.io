@@ -37,7 +37,7 @@ class _WorkCardState extends State<WorkCard> {
       constraints: BoxConstraints(maxWidth: 600),
       child: ScaleTransition(
         scale: CurvedAnimation(
-          curve: Interval(0.0, 0.8, curve: Curves.easeOutQuint),
+          curve: Interval(0.0, 0.9, curve: Curves.easeOutQuint),
           parent: widget.animation,
         ),
         child: Stack(
@@ -56,7 +56,7 @@ class _WorkCardState extends State<WorkCard> {
             ),
             ScaleTransition(
               scale: CurvedAnimation(
-                curve: Interval(0.2, 1.0, curve: Curves.easeOutQuint),
+                curve: Interval(0.1, 1.0, curve: Curves.easeOutQuint),
                 parent: widget.animation,
               ),
               child: GestureDetector(
