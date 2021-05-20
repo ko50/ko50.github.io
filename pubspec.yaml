@@ -30,6 +30,7 @@ flutter:
 
   assets:
     - assets/images/cotton_circle.png
+    - assets/images/ko.jpg
 
   fonts:
     - family: Roboto
