@@ -30,16 +30,6 @@ flutter:
 
   assets:
     - assets/images/cotton_circle.png
-    - assets/images/skills/Python.svg
-    - assets/images/skills/Dart.svg
-    - assets/images/skills/Flutter.svg
-    - assets/images/skills/React.svg
-    - assets/images/skills/TypeScript.svg
-    - assets/images/skills/Git.svg
-    - assets/images/skills/GitHub.svg
-    - assets/images/works/Portfolio.png
-    - assets/images/contacts/Twitter.svg
-    - assets/images/contacts/GitHub.svg
 
   fonts:
     - family: Roboto
