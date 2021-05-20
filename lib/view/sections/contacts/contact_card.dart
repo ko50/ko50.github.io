@@ -128,7 +128,7 @@ class _ContactCardState extends State<ContactCard>
             reverseCurve: Curves.easeInCirc,
             parent: widget.animation,
           ),
-          child: SvgPicture.asset(widget.contact.logoPath),
+          child: SvgPicture.network(widget.contact.logoUrl),
         ),
       ),
     );

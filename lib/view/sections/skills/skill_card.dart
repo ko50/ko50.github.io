@@ -82,8 +82,8 @@ class SkillCard extends StatelessWidget {
   }
 
   SvgPicture _logo() {
-    return SvgPicture.asset(
-      skill.logoPath,
+    return SvgPicture.network(
+      skill.iconUrl,
       height: 30,
       fit: BoxFit.fitHeight,
       alignment: Alignment.center,

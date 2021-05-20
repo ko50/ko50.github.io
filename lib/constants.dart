@@ -14,4 +14,4 @@ const Duration footerCloseDelay = Duration(milliseconds: 700);
 
 const Duration drawerAnimateDuration = Duration(milliseconds: 200);
 
-final String apiUriRoot = 'http://localhost:8000/api/v1';
+final String apiUriRoot = 'https://api.ko50.dev/api/v1';
