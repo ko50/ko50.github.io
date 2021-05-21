@@ -23,16 +23,19 @@ class SectionTransitionTile extends StatelessWidget {
 
       return MouseRegion(
         cursor: SystemMouseCursors.click,
-        child: GestureDetector(
-          onTap: () async {
-            controller.transition(transitionTarget);
-            await Future.delayed(
-              drawerAnimateDuration,
-              () => Navigator.of(context).pop(),
-            );
-          },
-          behavior: HitTestBehavior.opaque,
-          child: _content(focused),
+        child: Material(
+          type: MaterialType.transparency,
+          child: InkWell(
+            onTap: () async {
+              controller.transition(transitionTarget);
+              await Future.delayed(
+                drawerAnimateDuration,
+                () => Navigator.of(context).pop(),
+              );
+            },
+            // behavior: HitTestBehavior.opaque,
+            child: _content(focused),
+          ),
         ),
       );
     });
@@ -44,21 +47,22 @@ class SectionTransitionTile extends StatelessWidget {
       padding: const EdgeInsets.all(16.0),
       margin: const EdgeInsets.symmetric(vertical: 2.0),
       decoration: BoxDecoration(
-        boxShadow: [
-          if (focused) BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5),
-        ],
-        // border: Border.symmetric(
-        //   horizontal: BorderSide(
-        //     color: focused
-        //         ? ThemeColor.WhityPurple.color
-        //         : ThemeColor.Background.color,
-        //     width: 4.0,
-        //   ),
-        // ),
-        color: focused
-            ? ThemeColor.PurpleBlack.color
-            : ThemeColor.Background.color,
-      ),
+          boxShadow: [
+            if (focused)
+              BoxShadow(color: ThemeColor.Shadow.color, blurRadius: 5),
+          ],
+          // border: Border.symmetric(
+          //   horizontal: BorderSide(
+          //     color: focused
+          //         ? ThemeColor.WhityPurple.color
+          //         : ThemeColor.Background.color,
+          //     width: 4.0,
+          //   ),
+          // ),
+          color: focused
+              ? ThemeColor.PurpleBlack.color
+              : Colors.transparent // ThemeColor.Background.color,
+          ),
       child: AnimatedDefaultTextStyle(
         duration: drawerAnimateDuration,
         style: TextStyle(
