@@ -15,12 +15,14 @@ class Works extends StatelessWidget {
       builder: (data, animation) {
         assert(data.every((e) => e is WorkData));
 
-        return Column(
-          mainAxisSize: MainAxisSize.min,
+        return Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 30.0,
+          runSpacing: 30.0,
           children: [
-            for (int i = 0; i < data.length; i++)
+            for (int i = 0; i < 3; i++)
               WorkCard(
-                work: data[i] as WorkData,
+                work: data[0] as WorkData,
                 index: i,
                 animation: animation,
               ),
