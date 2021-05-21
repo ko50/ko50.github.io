@@ -20,9 +20,9 @@ class Works extends StatelessWidget {
           spacing: 30.0,
           runSpacing: 30.0,
           children: [
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.length; i++)
               WorkCard(
-                work: data[0] as WorkData,
+                work: data[i] as WorkData,
                 index: i,
                 animation: animation,
               ),
