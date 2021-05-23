@@ -11,6 +11,7 @@ enum ThemeColor {
   Grey,
   DeepGrey,
   Shadow,
+  PaleShadow,
 }
 
 extension ColorData on ThemeColor {
@@ -36,6 +37,8 @@ extension ColorData on ThemeColor {
         return 0xff323232;
       case ThemeColor.Shadow:
         return 0x88000000;
+      case ThemeColor.PaleShadow:
+        return 0x3f0f0f0f;
 
       default:
         return 0xff000000;
