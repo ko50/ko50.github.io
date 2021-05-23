@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show SystemMouseCursors;
+import 'package:flutter/widgets.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -95,13 +96,36 @@ class _WorkCardState extends State<WorkCard> {
         curve: Interval(0.6, 1.0, curve: Curves.easeInQuart),
         parent: widget.animation,
       ),
-      child: Container(
-        padding: EdgeInsets.zero,
-        child: Image.network(
-          widget.work.screenshotUrl,
-          alignment: Alignment.topCenter,
-          fit: BoxFit.cover,
-        ),
+      child: Stack(
+        children: [
+          Container(
+            padding: EdgeInsets.zero,
+            child: Image.network(
+              widget.work.screenshotUrl,
+              alignment: Alignment.topCenter,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Positioned(
+            top: 0.0,
+            right: 0.0,
+            bottom: 0.0,
+            left: 0.0,
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.transparent,
+                    Colors.transparent,
+                    ThemeColor.PaleShadow.color,
+                  ],
+                  begin: Alignment.center,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
