@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:portfolio/model/helper/image_url_replacer.dart';
 import 'package:portfolio/model/portfolio_api_data.dart';
 
@@ -13,5 +15,10 @@ class WorkData implements PortfolioAPIData {
         this.description = json['description'],
         this.screenshotUrl = replaceMediaUrl(json['screenshot']),
         this.link = json['link'],
-        this.tags = json['tags'].split(',');
+        this.tags = json['tags']
+            .toString()
+            // .substring(1, json['tags'].toString().length - 1)
+            .split(", ")
+            .map<String>((e) => e.replaceAll("'", ""))
+            .toList();
 }
