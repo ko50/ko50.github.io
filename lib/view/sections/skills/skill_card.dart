@@ -21,10 +21,10 @@ class SkillCard extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, detail) {
         return ScaleTransition(
-          alignment: Alignment.topLeft,
+          alignment: Alignment.center,
           scale: CurvedAnimation(
             curve: Interval(animationDelay, 1.0, curve: Curves.easeOutBack),
-            reverseCurve: Curves.easeOutBack,
+            reverseCurve: Interval(0, 1.0, curve: Curves.easeOutBack),
             parent: animation,
           ),
           child: Container(
