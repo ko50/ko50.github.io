@@ -22,8 +22,22 @@ class WorkCard extends StatefulWidget {
   _WorkCardState createState() => _WorkCardState();
 }
 
-class _WorkCardState extends State<WorkCard> {
+class _WorkCardState extends State<WorkCard>
+    with SingleTickerProviderStateMixin {
+  static const Duration _hoveredAnimationDuration = Duration(milliseconds: 200);
+  late final AnimationController _hoveredAnimationController =
+      AnimationController(
+    vsync: this,
+    duration: _hoveredAnimationDuration,
+  );
+
   bool _hovered = false;
+
+  @override
+  void dispose() {
+    _hoveredAnimationController.dispose();
+    super.dispose();
+  }
 
   void _launchLink() async {
     String url = widget.work.link;
@@ -63,11 +77,17 @@ class _WorkCardState extends State<WorkCard> {
               child: GestureDetector(
                 onTap: _launchLink,
                 child: MouseRegion(
-                  onEnter: (_) => setState(() => _hovered = true),
-                  onExit: (_) => setState(() => _hovered = false),
+                  onEnter: (_) => setState(() {
+                    _hovered = true;
+                    _hoveredAnimationController.forward();
+                  }),
+                  onExit: (_) => setState(() {
+                    _hovered = false;
+                    _hoveredAnimationController.reverse();
+                  }),
                   cursor: SystemMouseCursors.click,
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 200),
+                    duration: _hoveredAnimationDuration,
                     decoration: BoxDecoration(
                       color: _hovered
                           ? ThemeColor.PurpleBlack.color
@@ -98,13 +118,22 @@ class _WorkCardState extends State<WorkCard> {
       ),
       child: Stack(
         children: [
-          Container(
+          AnimatedContainer(
+            duration: _hoveredAnimationDuration,
             padding: EdgeInsets.zero,
-            child: Image.network(
-              widget.work.screenshotUrl,
-              alignment: Alignment.topCenter,
-              fit: BoxFit.cover,
+            child: ScaleTransition(
+              scale: Tween<double>(begin: 1.0, end: 1.2).animate(
+                CurvedAnimation(
+                  parent: _hoveredAnimationController,
+                  curve: Curves.easeInOutCubic,
+                ),
+              ),
+              child: Image.network(
+                widget.work.screenshotUrl,
+                alignment: Alignment.topCenter,
+              ),
             ),
+            // ),
           ),
           Positioned(
             top: 0.0,
@@ -139,7 +168,7 @@ class _WorkCardState extends State<WorkCard> {
           left: 16.0,
         ),
         child: AnimatedDefaultTextStyle(
-          duration: Duration(milliseconds: 200),
+          duration: _hoveredAnimationDuration,
           style: TextStyle(
             color: _hovered
                 ? ThemeColor.Background.color
@@ -153,7 +182,7 @@ class _WorkCardState extends State<WorkCard> {
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: AnimatedDefaultTextStyle(
-          duration: Duration(milliseconds: 200),
+          duration: _hoveredAnimationDuration,
           style: TextStyle(
             fontSize: 13,
             color: _hovered ? ThemeColor.Background.color : Colors.black,
@@ -169,7 +198,7 @@ class _WorkCardState extends State<WorkCard> {
           left: 16.0,
         ),
         child: AnimatedDefaultTextStyle(
-          duration: Duration(milliseconds: 200),
+          duration: _hoveredAnimationDuration,
           style: TextStyle(
             color: _hovered
                 ? ThemeColor.Background.color
