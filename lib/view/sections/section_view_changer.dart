@@ -6,7 +6,7 @@ import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/providers.dart';
 import 'package:portfolio/view/sections/about_me/about_me.dart';
 import 'package:portfolio/view/sections/contacts/contacts.dart';
-import 'package:portfolio/view/sections/root/root.dart';
+import 'package:portfolio/view/sections/home/home.dart';
 import 'package:portfolio/view/sections/skills/skills.dart';
 import 'package:portfolio/view/sections/works/works.dart';
 
@@ -25,7 +25,7 @@ class _SectionViewChangerState extends State<SectionViewChanger> {
 
         switch (displayedSection) {
           case Section.root:
-            return Root();
+            return Home();
           case Section.aboutMe:
             return AboutMe();
           case Section.skills:
