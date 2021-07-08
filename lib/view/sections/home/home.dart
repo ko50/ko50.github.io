@@ -6,14 +6,14 @@ import 'package:portfolio/enum/animation_type.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/providers.dart';
 import 'package:portfolio/constants.dart';
-import 'package:portfolio/view/sections/root/cotton_icon.dart';
+import 'package:portfolio/view/sections/home/cotton_icon.dart';
 
-class Root extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _RootState createState() => _RootState();
+  _HomeState createState() => _HomeState();
 }
 
-class _RootState extends State<Root> with SingleTickerProviderStateMixin {
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
