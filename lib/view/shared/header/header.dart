@@ -6,8 +6,8 @@ import 'package:portfolio/enum/screen_type.dart';
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/providers.dart';
-import 'package:portfolio/view/component/header/section_transition_button.dart';
-import 'package:portfolio/view/component/header/title_button.dart';
+import 'package:portfolio/view/shared/header/section_transition_button.dart';
+import 'package:portfolio/view/shared/header/title_button.dart';
 
 class Header extends StatelessWidget with PreferredSizeWidget {
   @override

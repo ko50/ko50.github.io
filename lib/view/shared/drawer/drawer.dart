@@ -6,7 +6,7 @@ import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/providers.dart';
-import 'package:portfolio/view/component/drawer/drawer_tile.dart';
+import 'package:portfolio/view/shared/drawer/drawer_tile.dart';
 
 class ResponsiveDrawer extends StatelessWidget {
   @override

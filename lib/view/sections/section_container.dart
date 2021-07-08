@@ -8,7 +8,7 @@ import 'package:portfolio/enum/sections.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/portfolio_api_data.dart';
 import 'package:portfolio/providers.dart';
-import 'package:portfolio/view/component/common/non_data_telop.dart';
+import 'package:portfolio/view/shared/common/non_data_telop.dart';
 
 class SectionContainer extends StatefulWidget {
   final Section section;
