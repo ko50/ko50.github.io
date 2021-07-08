@@ -18,11 +18,11 @@ const RESOURCES = {
 "assets/fonts/Roboto-Medium.ttf": "58aef543c97bbaf6a9896e8484456d98",
 "assets/fonts/Roboto-Bold.ttf": "e07df86cef2e721115583d61d1fb68a6",
 "assets/fonts/Roboto-Black.ttf": "5ebb24ee1112dd9562629375c387879a",
-"main.dart.js": "23f88e32f7aaaffe3d8cd542e78cfbfd",
+"main.dart.js": "d8ab343e62413daae03b351a28f6cc6e",
 "version.json": "426313f2f3133c2f20415344c4a22df3",
 "CNAME": "7e3c23e6399887987831e82dd485a875",
-"index.html": "a946cbfe9ef736f7797a3a74f95559b5",
-"/": "a946cbfe9ef736f7797a3a74f95559b5",
+"index.html": "2d5ca1c327323a7a8a79c5bd7a4894d3",
+"/": "2d5ca1c327323a7a8a79c5bd7a4894d3",
 "manifest.json": "84fa74280f2b60578ee975e2dec345d3"
 };
 
