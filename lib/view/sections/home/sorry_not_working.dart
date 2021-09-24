@@ -127,7 +127,7 @@ class _SorryNotWorkingState extends State<SorryNotWorking> {
           ),
         ),
         TypewriterAnimatedText(
-          "僕が証明書を更新できるように\nTwitterをフォローして応援してください →@ko_CottonLove",
+          "証明書を更新できるように\nTwitterをフォローして応援してください →@ko_CottonLove",
           curve: Curves.easeOutCirc,
           cursor: "|",
           speed: Duration(milliseconds: 100),
