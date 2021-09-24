@@ -7,6 +7,7 @@ import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/providers.dart';
 import 'package:portfolio/constants.dart';
 import 'package:portfolio/view/sections/home/cotton_icon.dart';
+import 'package:portfolio/view/sections/home/sorry_not_working.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -14,16 +15,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: Duration(milliseconds: transitionDefaultDuration * 2),
-      vsync: this,
-    );
-  }
+  late final AnimationController _controller = AnimationController(
+    duration: Duration(milliseconds: transitionDefaultDuration * 2),
+    vsync: this,
+  );
 
   @override
   void dispose() {
@@ -53,7 +48,13 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       constraints: BoxConstraints(minHeight: detail.maxHeight),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [CottonIcon(_controller), _introduction()],
+                        children: [
+                          SizedBox(height: 32.0),
+                          CottonIcon(_controller),
+                          _introduction(),
+                          SorryNotWorking(_controller),
+                          SizedBox(height: 32.0),
+                        ],
                       ),
                     ),
                   );
