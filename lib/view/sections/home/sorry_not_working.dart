@@ -106,7 +106,7 @@ class _SorryNotWorkingState extends State<SorryNotWorking> {
           "このサイトは現在動作していません",
           curve: Curves.easeOutCirc,
           cursor: "|",
-          speed: Duration(milliseconds: 100),
+          speed: Duration(milliseconds: 200),
           textAlign: TextAlign.left,
           textStyle: TextStyle(
             color: _color,
