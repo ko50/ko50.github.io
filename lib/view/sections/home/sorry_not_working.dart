@@ -30,14 +30,8 @@ class _SorryNotWorkingState extends State<SorryNotWorking> {
     return FutureBuilder<bool>(
       future: checkAPIConnection(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState != ConnectionState.done)
-          return Center(
-            child: CircularProgressIndicator(
-              color: ThemeColor.PalePink.color,
-            ),
-          );
-
         bool connection = snapshot.data ?? false;
+
         if (!connection) return Container();
 
         return _animation(
