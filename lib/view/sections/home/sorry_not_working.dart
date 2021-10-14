@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/enum/theme_colors.dart';
+import 'package:portfolio/model/helper/check_connection.dart';
 
 class SorryNotWorking extends StatefulWidget {
   final Animation<double> animation;
@@ -26,6 +27,35 @@ class _SorryNotWorkingState extends State<SorryNotWorking> {
 
   @override
   Widget build(BuildContext context) {
+    return FutureBuilder<bool>(
+      future: checkAPIConnection(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState != ConnectionState.done)
+          return Center(
+            child: CircularProgressIndicator(
+              color: ThemeColor.PalePink.color,
+            ),
+          );
+
+        bool connection = snapshot.data ?? false;
+        if (!connection) return Container();
+
+        return _animation(
+          Padding(
+            padding: EdgeInsets.all(32.0),
+            child: Stack(
+              children: [
+                _card(),
+                Positioned.fill(child: _pressable()),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _animation(Widget child) {
     return SlideTransition(
       position: Tween<Offset>(
         begin: Offset(0.0, 1.0),
@@ -41,15 +71,7 @@ class _SorryNotWorkingState extends State<SorryNotWorking> {
           curve: Curves.easeInOutExpo,
           parent: widget.animation,
         ),
-        child: Padding(
-          padding: EdgeInsets.all(32.0),
-          child: Stack(
-            children: [
-              _card(),
-              Positioned.fill(child: _pressable()),
-            ],
-          ),
-        ),
+        child: child,
       ),
     );
   }
