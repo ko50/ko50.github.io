@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart' show SystemMouseCursors;
 
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:portfolio/constants.dart';
 import 'package:portfolio/enum/theme_colors.dart';
 import 'package:portfolio/model/contacts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -66,41 +64,13 @@ class _ContactCardState extends State<ContactCard>
             onTap: _launchLink,
             child: Stack(
               children: [
-                Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 32.0, vertical: 32.0),
-                  constraints: BoxConstraints(maxWidth: 400),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: ThemeColor.PurpleBlack.color),
-                  ),
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [_logo(), _userName()],
-                    ),
-                  ),
-                ),
+                _card(),
                 Positioned(
                   top: 0,
                   right: 0,
                   bottom: 0,
                   left: 0,
-                  child: FadeTransition(
-                    opacity: Tween(begin: 1.0, end: 0.0).animate(
-                      CurvedAnimation(
-                        curve: Curves.easeOutQuint,
-                        reverseCurve: Curves.easeInQuint,
-                        parent: widget.animation,
-                      ),
-                    ),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: ThemeColor.PurpleBlack.color,
-                        border: Border.all(color: ThemeColor.PurpleBlack.color),
-                      ),
-                    ),
-                  ),
+                  child: _fade(),
                 ),
               ],
             ),
@@ -110,9 +80,52 @@ class _ContactCardState extends State<ContactCard>
     );
   }
 
+  Widget _fade() {
+    return FadeTransition(
+      opacity: Tween(begin: 1.0, end: 0.0).animate(
+        CurvedAnimation(
+          curve: Curves.easeOutQuint,
+          reverseCurve: Curves.easeInQuint,
+          parent: widget.animation,
+        ),
+      ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: ThemeColor.PurpleBlack.color,
+          border: Border.all(color: ThemeColor.PurpleBlack.color),
+        ),
+      ),
+    );
+  }
+
+  Widget _card() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 32.0, vertical: 32.0),
+      constraints: BoxConstraints(maxWidth: 400),
+      decoration: BoxDecoration(
+        color: ThemeColor.Background.color,
+        border: Border.all(color: ThemeColor.PurpleBlack.color),
+        boxShadow: [
+          BoxShadow(
+            color: ThemeColor.Shadow.color,
+            blurRadius: 5.0,
+            spreadRadius: 5.0,
+          ),
+        ],
+      ),
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [_logo(), _userName()],
+        ),
+      ),
+    );
+  }
+
   Widget _logo() {
-    return RotationTransition(
-      turns: Tween(begin: 0.0, end: 0.2).animate(
+    return ScaleTransition(
+      scale: Tween(begin: 1.0, end: 1.5).animate(
         CurvedAnimation(
           curve: Curves.bounceOut,
           reverseCurve: Curves.bounceIn,
